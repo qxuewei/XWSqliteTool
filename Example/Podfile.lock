@@ -1,0 +1,16 @@
+PODS:
+  - XWSqliteTool (0.1.0)
+
+DEPENDENCIES:
+  - XWSqliteTool (from `../`)
+
+EXTERNAL SOURCES:
+  XWSqliteTool:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  XWSqliteTool: 087a94d35fbc64fff6fe87b8f5a77fd6aa357838
+
+PODFILE CHECKSUM: 0f10ef7799e96dc744cbcecc7ad182d088a85cf2
+
+COCOAPODS: 1.2.0.beta.1

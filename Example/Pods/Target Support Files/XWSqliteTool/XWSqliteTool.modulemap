@@ -1,0 +1,6 @@
+framework module XWSqliteTool {
+  umbrella header "XWSqliteTool-umbrella.h"
+
+  export *
+  module * { export * }
+}

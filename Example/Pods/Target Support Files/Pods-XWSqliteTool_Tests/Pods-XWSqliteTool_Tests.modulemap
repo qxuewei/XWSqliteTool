@@ -1,0 +1,6 @@
+framework module Pods_XWSqliteTool_Tests {
+  umbrella header "Pods-XWSqliteTool_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}
