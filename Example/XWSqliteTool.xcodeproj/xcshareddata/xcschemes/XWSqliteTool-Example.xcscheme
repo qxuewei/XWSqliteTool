@@ -26,7 +26,8 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES">
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      codeCoverageEnabled = "YES">
       <Testables>
          <TestableReference
             skipped = "NO">
@@ -35,6 +36,16 @@
                BlueprintIdentifier = "6003F5AD195388D20070C39A"
                BuildableName = "XWSqliteTool_Tests.xctest"
                BlueprintName = "XWSqliteTool_Tests"
+               ReferencedContainer = "container:XWSqliteTool.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "2E41D5081E49CCEA00425F1F"
+               BuildableName = "XWSqliteTool_ExampleTests.xctest"
+               BlueprintName = "XWSqliteTool_ExampleTests"
                ReferencedContainer = "container:XWSqliteTool.xcodeproj">
             </BuildableReference>
          </TestableReference>
