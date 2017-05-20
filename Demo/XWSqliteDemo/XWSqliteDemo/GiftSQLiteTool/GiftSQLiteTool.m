@@ -13,6 +13,8 @@
 #import "XWSqliteTableTool.h"
 #import "GiftModel.h"
 
+
+
 @implementation GiftSQLiteTool
 
 /// 创建礼物数据库
@@ -22,13 +24,15 @@
 
 /// 存储展示的模型数组到数据库
 + (void)saveModelsWithShow:(NSArray <GiftModel *>*)giftModles {
+    NSString *tableName = [XWXModelTool tableNameWithCls:[GiftModel class]];
    NSDictionary *DICT =  [XWXModelTool classIvarNameTypeDic:[GiftModel class]];
+    NSArray *allPropertys = [DICT allKeys];
+    NSMutableArray *updateSQLArrM = [NSMutableArray array];
+//    for (NSString *property in allPropertys) {
+//        NSString *searchSql = @"SELECT * FROM %@ WHERE ''",tableName;
+//    }
     
-    [giftModles enumerateObjectsUsingBlock:^(GiftModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        //INSERT INTO TABLE_NAME (column1, column2, column3,...columnN)]
-        //VALUES (value1, value2, value3,...valueN)
-        
-    }];
+    
 }
 
 
