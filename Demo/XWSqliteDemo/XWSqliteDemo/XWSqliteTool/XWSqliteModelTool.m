@@ -139,7 +139,7 @@
  @param objs 模型数组
  @return 更新结果
  */
-+ (BOOL)insertOrUpdateDataToSQLiteWithModels:(NSArray <NSObject <XWXModelProtocol>*>*)objs {
++ (BOOL)insertOrUpdateDataToSQLiteWithModels:(NSArray <NSObject <XWXModelProtocol>*>*)objs uid:(NSString *)uid{
     if (objs.count == 0) {
         return NO;
     }
@@ -149,8 +149,12 @@
         return NO;
     }
     
-    if (![XWSqliteModelTool createTableFromCls:cls uid:nil]) {
+    if (![XWSqliteModelTool createTableFromCls:cls uid:uid]) {
         NSLog(@"用 %@ 模型新建数据库失败!",NSStringFromClass(cls));
+        return NO;
+    }
+    if (![self toUpdateTable:cls uid:uid]) {
+        NSLog(@"检测到 %@ 模型字段更改,对应的数据库迁移失败!",NSStringFromClass(cls));
         return NO;
     }
     NSMutableArray *sqls = [NSMutableArray array];
@@ -158,6 +162,14 @@
         [sqls addObject:[self insertOrUpdateDataToSQLiteWithModel:obj]];
     }
     return [XWSqliteTool dealSqls:sqls uid:nil];
+}
+
+#pragma mark - private
++ (BOOL)toUpdateTable:(Class)cls uid:(NSString *)uid {
+    if (![self isTableRequiredUpdate:cls uid:uid]) {
+        return YES;
+    }
+    return [self updateTableFromCls:cls uid:uid];
 }
 
 
