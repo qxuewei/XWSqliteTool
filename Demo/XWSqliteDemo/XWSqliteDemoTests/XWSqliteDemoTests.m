@@ -34,7 +34,7 @@
 //    [GiftSQLiteTool creatGiftSQLite];
 //    GiftModel *testModel = [self testGiftModel];
 //    BOOL I = [XWSqliteTool deal:[XWSqliteModelTool insertOrUpdateDataToSQLiteWithModel:testModel] uid:NULL];
-    BOOL I = [XWSqliteModelTool insertOrUpdateDataToSQLiteWithModels:[self testGiftModels]];
+    BOOL I = [XWSqliteModelTool insertOrUpdateDataToSQLiteWithModels:[self testGiftModels] uid:nil];
     XCTAssertTrue(I);
     
 }
