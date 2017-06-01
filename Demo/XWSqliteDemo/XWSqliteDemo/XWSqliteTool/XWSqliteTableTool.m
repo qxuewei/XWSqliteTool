@@ -33,6 +33,7 @@
         [columnNames addObject:nameType];
     }
     [columnNames sortUsingComparator:^NSComparisonResult(NSString *obj1,NSString *obj2) {
+        //排序
         return [obj1 compare:obj2];
     }];
     return columnNames;

@@ -23,7 +23,10 @@ sqlite3 *ppDb = nil;
 }
 
 +(NSMutableArray<NSMutableDictionary *> *)querySql:(NSString *)sql uid:(NSString *)uid{
-    [self openDBWithUid:uid];
+    BOOL open = [self openDBWithUid:uid];
+    if (!open) {
+        return NULL;
+    }
     //创建准备语句
     // 参数3: 参数2取出多少字节的长度 -1 自动计算 \0
     // 参数4: 准备语句

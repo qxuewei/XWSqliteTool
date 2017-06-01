@@ -19,8 +19,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    [GiftSQLiteTool creatGiftSQLite];
-    [GiftSQLiteTool saveModelsWithShow:NULL];
+    
+//    [GiftSQLiteTool saveModelsWithShow:NULL];
 }
 
 

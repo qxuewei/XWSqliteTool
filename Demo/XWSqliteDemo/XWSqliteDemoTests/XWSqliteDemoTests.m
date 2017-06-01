@@ -7,6 +7,10 @@
 //
 
 #import <XCTest/XCTest.h>
+#import "GiftModel.h"
+#import "XWSqliteModelTool.h"
+#import "GiftSQLiteTool.h"
+#import "XWSqliteTool.h"
 
 @interface XWSqliteDemoTests : XCTestCase
 
@@ -25,8 +29,33 @@
 }
 
 - (void)testExample {
-    // This is an example of a functional test case.
-    // Use XCTAssert and related functions to verify your tests produce the correct results.
+    
+//    NSLog(@"%@",NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES).firstObject);
+//    [GiftSQLiteTool creatGiftSQLite];
+//    GiftModel *testModel = [self testGiftModel];
+//    BOOL I = [XWSqliteTool deal:[XWSqliteModelTool insertOrUpdateDataToSQLiteWithModel:testModel] uid:NULL];
+    BOOL I = [XWSqliteModelTool insertOrUpdateDataToSQLiteWithModels:[self testGiftModels]];
+    XCTAssertTrue(I);
+    
+}
+
+- (GiftModel *)testGiftModelgiftType:(NSString *)giftType giftID:(NSString *)giftID {
+    GiftModel *model = [[GiftModel alloc] init];
+    model.giftID = giftID;
+    model.giftName = @"hahaha";
+    model.giftType = giftType;
+    model.giftPrice = @"1.99";
+    model.giftUrl = @"www.qiuxuewei.com";
+    return model;
+}
+
+- (NSArray *)testGiftModels {
+    NSMutableArray *arrM = [NSMutableArray array];
+    for (int i = 1; i < 10; i++) {
+        NSString *type = [NSString stringWithFormat:@"%zd",arc4random_uniform(8)];
+        [arrM addObject:[self testGiftModelgiftType:type giftID:[NSString stringWithFormat:@"%zd",i]]];
+    }
+    return arrM;
 }
 
 - (void)testPerformanceExample {

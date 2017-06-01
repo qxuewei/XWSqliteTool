@@ -28,7 +28,7 @@
 /// 版本号
 @property (nonatomic, copy) NSString *giftVersion;
 /// 键盘AE动画名
-@property (nonatomic, copy) NSString *kb_lottieAnimationName;
+@property (nonatomic, copy) NSString *kbLottieAnimationName;
 /// AE大动画名
 @property (nonatomic, copy) NSString *lottieAnimationName;
 /// 序列帧持续时间
@@ -41,7 +41,7 @@
 //****
 //远程更新动态礼物效果用  giftVersion 跟之前不一致时不为空
 /// 远程更新的键盘AE动画压缩包路径
-@property (nonatomic, copy) NSString *kb_lottieAnimationNameUpdateZipUrl;
+@property (nonatomic, copy) NSString *kbLottieAnimationNameUpdateZipUrl;
 /// 远程更新的键盘AE大动画压缩包路径
 @property (nonatomic, copy) NSString *lottieAnimationNameUpdateZipUrl;
 
