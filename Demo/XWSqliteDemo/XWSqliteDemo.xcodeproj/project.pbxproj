@@ -17,7 +17,6 @@
 		2E790CEC1ECDE7D00098374D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E790CEA1ECDE7D00098374D /* LaunchScreen.storyboard */; };
 		2E790CF71ECDE7D00098374D /* XWSqliteDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E790CF61ECDE7D00098374D /* XWSqliteDemoTests.m */; };
 		2E790D021ECDE7D00098374D /* XWSqliteDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E790D011ECDE7D00098374D /* XWSqliteDemoUITests.m */; };
-		2E790D121ECDE81D0098374D /* GiftSQLiteTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E790D111ECDE81D0098374D /* GiftSQLiteTool.m */; };
 		2E790D151ECDE8280098374D /* GiftModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E790D141ECDE8280098374D /* GiftModel.m */; };
 		2E790D201ECDEB340098374D /* XWSqliteModelTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E790D181ECDEB340098374D /* XWSqliteModelTool.m */; };
 		2E790D211ECDEB340098374D /* XWSqliteTableTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E790D1A1ECDEB340098374D /* XWSqliteTableTool.m */; };
@@ -70,8 +69,6 @@
 		2E790CFD1ECDE7D00098374D /* XWSqliteDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XWSqliteDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E790D011ECDE7D00098374D /* XWSqliteDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XWSqliteDemoUITests.m; sourceTree = "<group>"; };
 		2E790D031ECDE7D00098374D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2E790D101ECDE81D0098374D /* GiftSQLiteTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GiftSQLiteTool.h; sourceTree = "<group>"; };
-		2E790D111ECDE81D0098374D /* GiftSQLiteTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GiftSQLiteTool.m; sourceTree = "<group>"; };
 		2E790D131ECDE8280098374D /* GiftModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GiftModel.h; sourceTree = "<group>"; };
 		2E790D141ECDE8280098374D /* GiftModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GiftModel.m; sourceTree = "<group>"; };
 		2E790D171ECDEB340098374D /* XWSqliteModelTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWSqliteModelTool.h; sourceTree = "<group>"; };
@@ -211,8 +208,6 @@
 			children = (
 				2E790D131ECDE8280098374D /* GiftModel.h */,
 				2E790D141ECDE8280098374D /* GiftModel.m */,
-				2E790D101ECDE81D0098374D /* GiftSQLiteTool.h */,
-				2E790D111ECDE81D0098374D /* GiftSQLiteTool.m */,
 			);
 			path = GiftSQLiteTool;
 			sourceTree = "<group>";
@@ -544,7 +539,6 @@
 				2E790D291ECDEBC20098374D /* GiftLogicTool.m in Sources */,
 				2E790D221ECDEB340098374D /* XWSqliteTool.m in Sources */,
 				2E790CE41ECDE7D00098374D /* ViewController.m in Sources */,
-				2E790D121ECDE81D0098374D /* GiftSQLiteTool.m in Sources */,
 				2E790D211ECDEB340098374D /* XWSqliteTableTool.m in Sources */,
 				2E790CE11ECDE7D00098374D /* AppDelegate.m in Sources */,
 				2E790D151ECDE8280098374D /* GiftModel.m in Sources */,

@@ -7,10 +7,9 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "GiftModel.h"
 #import "XWSqliteModelTool.h"
-#import "GiftSQLiteTool.h"
 #import "XWSqliteTool.h"
+#import "GiftModel.h"
 
 @interface XWSqliteDemoTests : XCTestCase
 
@@ -30,12 +29,12 @@
 
 - (void)testExample {
     
-//    NSLog(@"%@",NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES).firstObject);
-//    [GiftSQLiteTool creatGiftSQLite];
-//    GiftModel *testModel = [self testGiftModel];
-//    BOOL I = [XWSqliteTool deal:[XWSqliteModelTool insertOrUpdateDataToSQLiteWithModel:testModel] uid:NULL];
+    NSLog(@"%@",NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES).firstObject);
     BOOL I = [XWSqliteModelTool insertOrUpdateDataToSQLiteWithModels:[self testGiftModels] uid:nil];
     XCTAssertTrue(I);
+    
+    GiftModel *model = (GiftModel *)[XWSqliteModelTool objectFromDatabaseWithPrimaryKey:@"2" modelCls:[GiftModel class] uid:nil];
+    NSLog(@"model:  %@ ",model);
     
 }
 

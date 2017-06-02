@@ -7,7 +7,6 @@
 //
 
 #import "ViewController.h"
-#import "GiftSQLiteTool.h"
 
 @interface ViewController ()
 

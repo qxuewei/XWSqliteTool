@@ -86,7 +86,7 @@
  @param obj 要插入的模型
  @return 最终SQL语句
  */
-+ (NSString *)insertOrUpdateDataToSQLiteWithModel:(NSObject <XWXModelProtocol>*)obj {
++ (NSString *)insertOrUpdateDataToSQLiteWithModel:(NSObject <XWXModelProtocol>*)obj uid:(NSString *)uid {
     if (!obj) {
         return NULL;
     }
@@ -143,25 +143,68 @@
     if (objs.count == 0) {
         return NO;
     }
-    Class cls = [[objs firstObject] class];
-    if (![cls respondsToSelector:@selector(primaryKey)]) {
-        NSLog(@"倘若希望使用 %@ 模型数组进行本地数据库新增或更新,需要实现 +(NSString *)primaryKey; 类方法(准守XWXModelProtocol协议)",NSStringFromClass(cls));
+    Class objClass = [[objs firstObject] class];
+    if (![objClass respondsToSelector:@selector(primaryKey)]) {
+        NSLog(@"倘若希望使用 %@ 模型数组进行本地数据库新增或更新,需要实现 +(NSString *)primaryKey; 类方法(准守XWXModelProtocol协议)",NSStringFromClass(objClass));
         return NO;
     }
     
-    if (![XWSqliteModelTool createTableFromCls:cls uid:uid]) {
-        NSLog(@"用 %@ 模型新建数据库失败!",NSStringFromClass(cls));
+    if (![XWSqliteModelTool createTableFromCls:objClass uid:uid]) {
+        NSLog(@"用 %@ 模型新建数据库失败!",NSStringFromClass(objClass));
         return NO;
     }
-    if (![self toUpdateTable:cls uid:uid]) {
-        NSLog(@"检测到 %@ 模型字段更改,对应的数据库迁移失败!",NSStringFromClass(cls));
-        return NO;
+    
+    if (![self toUpdateTable:objClass uid:uid]) {
+        NSLog(@"检测到 %@ 模型字段更改,对应的数据库迁移失败!",NSStringFromClass(objClass));
+        return NULL;
     }
+    
     NSMutableArray *sqls = [NSMutableArray array];
     for (NSObject <XWXModelProtocol>*obj in objs) {
-        [sqls addObject:[self insertOrUpdateDataToSQLiteWithModel:obj]];
+        [sqls addObject:[self insertOrUpdateDataToSQLiteWithModel:obj uid:uid]];
     }
-    return [XWSqliteTool dealSqls:sqls uid:nil];
+    return [XWSqliteTool dealSqls:sqls uid:uid];
+}
+
+
+/**
+ 传入模型主键值提取数据库中存储的此模型数据
+
+ @param primaryKey 主键值
+ @param cls 模型类
+ @param uid uid
+ @return 数据库主键为primaryKey的模型
+ */
++ (id <XWXModelProtocol>)objectFromDatabaseWithPrimaryKey:(NSString *)primaryKey modelCls:(Class)cls uid:(NSString *)uid {
+    if (primaryKey.length == 0 || primaryKey == NULL || [primaryKey isEqualToString:@"'(null)'"]) {
+        NSLog(@"请传入主键");
+        return NULL;
+    }
+    if (![cls respondsToSelector:@selector(primaryKey)]) {
+        NSLog(@"倘若希望使用 %@ 模型数组进行本地数据库新增或更新,需要实现 +(NSString *)primaryKey; 类方法(准守XWXModelProtocol协议)",NSStringFromClass(cls));
+        return NULL;
+    }
+    // 成员属性 = 数据库对应类型
+    NSDictionary *ivarNameTypeDict = [XWXModelTool classIvarNameTypeDic:cls];
+    // 所有成员属性
+    NSArray <NSString *>*allPropertyStrs = [ivarNameTypeDict allKeys];
+    // 数据库表名
+    NSString *tableName = [XWXModelTool tableNameWithCls:cls];
+    // 主键
+    NSString *primaryKeyStr = [cls primaryKey];
+    NSString *querySql = [NSString stringWithFormat:@"SELECT * FROM %@ where %@ = '%@'",tableName,primaryKeyStr,primaryKey];
+    NSMutableArray *queryResult = [XWSqliteTool querySql:querySql uid:uid];
+    // 模型数据字典
+    NSDictionary *modelDict = [queryResult objectAtIndex:0];
+    
+    Class GiftModelClass = [cls class];
+    id object = [[GiftModelClass alloc] init];
+    [modelDict enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+        if (obj && [allPropertyStrs containsObject:key]) {
+            [object setValue:obj forKey:key];
+        }
+    }];
+    return (id<XWXModelProtocol>)object;
 }
 
 #pragma mark - private

@@ -21,7 +21,7 @@
  @param obj 要插入的模型
  @return 最终SQL语句
  */
-+ (NSString *)insertOrUpdateDataToSQLiteWithModel:(NSObject <XWXModelProtocol>*)obj;
++ (NSString *)insertOrUpdateDataToSQLiteWithModel:(NSObject <XWXModelProtocol>*)obj uid:(NSString *)uid;
 /**
  对模型数组进行本地数据库新增或更新 - 若存在则更新所以字段,所不存在则插入本条数据
  
@@ -29,4 +29,14 @@
  @return 更新结果
  */
 + (BOOL)insertOrUpdateDataToSQLiteWithModels:(NSArray <NSObject <XWXModelProtocol>*>*)objs uid:(NSString *)uid;
+
+/**
+ 传入模型主键值提取数据库中存储的此模型数据
+ 
+ @param primaryKey 主键值
+ @param cls 模型类
+ @param uid uid
+ @return 数据库主键为primaryKey的模型
+ */
++ (id <XWXModelProtocol>)objectFromDatabaseWithPrimaryKey:(NSString *)primaryKey modelCls:(Class)cls uid:(NSString *)uid;
 @end
