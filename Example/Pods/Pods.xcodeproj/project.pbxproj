@@ -15,7 +15,6 @@
 		A545AAD09A2CB200221C7D77FC681DE1 /* XWSqliteTool-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3952FCC29BB36C4631CA63FF238F1BDE /* XWSqliteTool-dummy.m */; };
 		C6D19E4415EF432721EEF0477FBE8193 /* XWSqliteTool-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 63FFDB62A188A5F2749A72F67222BD9E /* XWSqliteTool-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E469170FD2C01253C36DBDF443B91B13 /* Pods-XWSqliteTool_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F38D7F35916515E5345F2412BB9E2B2A /* Pods-XWSqliteTool_Example-dummy.m */; };
-		F9320274C19E83DF7CFF53C9AB41428E /* ReplaceMe.m in Sources */ = {isa = PBXBuildFile; fileRef = F64D981B6B07FDF37E00E86095A6AF85 /* ReplaceMe.m */; };
 		FCD85C0F5AED995E086D5C71DAAB0628 /* Pods-XWSqliteTool_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 22DE1FEDE3920A2C2F5143F29B6A8BF3 /* Pods-XWSqliteTool_Tests-dummy.m */; };
 /* End PBXBuildFile section */
 
@@ -30,15 +29,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0A4D190DFD2CE24BCDAF2A2AD1F6EABA /* XWSqliteTool.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = XWSqliteTool.framework; path = XWSqliteTool.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0A4D190DFD2CE24BCDAF2A2AD1F6EABA /* XWSqliteTool.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = XWSqliteTool.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B1EDC339757B2A8754971B3EB235D4A /* Pods-XWSqliteTool_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-XWSqliteTool_Example-resources.sh"; sourceTree = "<group>"; };
-		1FF5466CD3AB031B4A2FE1E6A8100872 /* Pods_XWSqliteTool_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_XWSqliteTool_Tests.framework; path = "Pods-XWSqliteTool_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1FF5466CD3AB031B4A2FE1E6A8100872 /* Pods_XWSqliteTool_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_XWSqliteTool_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		22DE1FEDE3920A2C2F5143F29B6A8BF3 /* Pods-XWSqliteTool_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-XWSqliteTool_Tests-dummy.m"; sourceTree = "<group>"; };
 		26B4A4799A8734203107700E44CA999A /* Pods-XWSqliteTool_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-XWSqliteTool_Example-umbrella.h"; sourceTree = "<group>"; };
 		27D740CBD2DFAEE3363B3AFFE8984D99 /* Pods-XWSqliteTool_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-XWSqliteTool_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		28B1CF905D59DF9BEF0A0DDF026B55B9 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		337A6A3ECB04D17E87CFA01201D87EBA /* XWSqliteTool.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = XWSqliteTool.xcconfig; sourceTree = "<group>"; };
-		3593080F947BD4EFEF755DB007F65E84 /* Pods-XWSqliteTool_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-XWSqliteTool_Example.modulemap"; sourceTree = "<group>"; };
+		3593080F947BD4EFEF755DB007F65E84 /* Pods-XWSqliteTool_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-XWSqliteTool_Example.modulemap"; sourceTree = "<group>"; };
 		3952FCC29BB36C4631CA63FF238F1BDE /* XWSqliteTool-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "XWSqliteTool-dummy.m"; sourceTree = "<group>"; };
 		63FFDB62A188A5F2749A72F67222BD9E /* XWSqliteTool-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "XWSqliteTool-umbrella.h"; sourceTree = "<group>"; };
 		6BC147407382C40F24020DEDC23D415F /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -48,17 +47,16 @@
 		801A7AEC385E3C2F7756AFAB131A6418 /* Pods-XWSqliteTool_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-XWSqliteTool_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		839B045DB95F4890B7CE07F02A2E4708 /* XWSqliteTool-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "XWSqliteTool-prefix.pch"; sourceTree = "<group>"; };
 		88CFE1E8CD1B91F3B853B079518F8545 /* Pods-XWSqliteTool_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-XWSqliteTool_Tests-frameworks.sh"; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A52DED784F2173C062634B33869C02EF /* Pods-XWSqliteTool_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-XWSqliteTool_Example-frameworks.sh"; sourceTree = "<group>"; };
-		A720011146A0D5A21CF4FB9A468F0C6D /* XWSqliteTool.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = XWSqliteTool.modulemap; sourceTree = "<group>"; };
+		A720011146A0D5A21CF4FB9A468F0C6D /* XWSqliteTool.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = XWSqliteTool.modulemap; sourceTree = "<group>"; };
 		A7C44B479B8D72F73168B05B5CB7F39E /* Pods-XWSqliteTool_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-XWSqliteTool_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		CA8F9AFE43E4539291954F91A949E3CE /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		D88D003A32EA372886DB017238D99361 /* Pods_XWSqliteTool_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_XWSqliteTool_Example.framework; path = "Pods-XWSqliteTool_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D88D003A32EA372886DB017238D99361 /* Pods_XWSqliteTool_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_XWSqliteTool_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE9B3E8675C11DE1C33D152CCF7AB4EE /* Pods-XWSqliteTool_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-XWSqliteTool_Tests-umbrella.h"; sourceTree = "<group>"; };
-		ED68D22CADC9206FBEED7F1D4FF9AB5A /* Pods-XWSqliteTool_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-XWSqliteTool_Tests.modulemap"; sourceTree = "<group>"; };
+		ED68D22CADC9206FBEED7F1D4FF9AB5A /* Pods-XWSqliteTool_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-XWSqliteTool_Tests.modulemap"; sourceTree = "<group>"; };
 		F38D7F35916515E5345F2412BB9E2B2A /* Pods-XWSqliteTool_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-XWSqliteTool_Example-dummy.m"; sourceTree = "<group>"; };
-		F64D981B6B07FDF37E00E86095A6AF85 /* ReplaceMe.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = ReplaceMe.m; sourceTree = "<group>"; };
 		F7FBB769B8EC9CD9CC45C495F688B141 /* Pods-XWSqliteTool_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-XWSqliteTool_Tests-resources.sh"; sourceTree = "<group>"; };
 		F98169CF29DD174BDFD157442BC52485 /* Pods-XWSqliteTool_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-XWSqliteTool_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		FD02C7A7129E723A60D6163AC3596E40 /* Pods-XWSqliteTool_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-XWSqliteTool_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
@@ -195,9 +193,7 @@
 		CE9B9283C4643E9E9ECF9F65F27ECBCD /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				F64D981B6B07FDF37E00E86095A6AF85 /* ReplaceMe.m */,
 			);
-			name = Classes;
 			path = Classes;
 			sourceTree = "<group>";
 		};
@@ -220,7 +216,6 @@
 			children = (
 				CE9B9283C4643E9E9ECF9F65F27ECBCD /* Classes */,
 			);
-			name = XWSqliteTool;
 			path = XWSqliteTool;
 			sourceTree = "<group>";
 		};
@@ -339,7 +334,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F9320274C19E83DF7CFF53C9AB41428E /* ReplaceMe.m in Sources */,
 				A545AAD09A2CB200221C7D77FC681DE1 /* XWSqliteTool-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

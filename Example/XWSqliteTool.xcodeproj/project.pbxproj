@@ -8,14 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		056D8229002D3A27B2651A5A /* Pods_XWSqliteTool_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D688824E19C40436A4FECC1A /* Pods_XWSqliteTool_Example.framework */; };
+		2E229B011EE111A200496562 /* XWSqliteModelTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E229AF91EE111A200496562 /* XWSqliteModelTool.m */; };
+		2E229B021EE111A200496562 /* XWSqliteTableTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E229AFB1EE111A200496562 /* XWSqliteTableTool.m */; };
+		2E229B031EE111A200496562 /* XWSqliteTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E229AFD1EE111A200496562 /* XWSqliteTool.m */; };
+		2E229B041EE111A200496562 /* XWXModelTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E229B001EE111A200496562 /* XWXModelTool.m */; };
 		2E41D4901E49765D00425F1F /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E41D48F1E49765D00425F1F /* libsqlite3.0.tbd */; };
-		2E41D4941E49767B00425F1F /* XWSqliteTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E41D4931E49767B00425F1F /* XWSqliteTool.m */; };
 		2E41D50C1E49CCEA00425F1F /* XWSqliteTool_ExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E41D50B1E49CCEA00425F1F /* XWSqliteTool_ExampleTests.m */; };
 		2E41D5141E49CDD000425F1F /* XWSqliteToolCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E41D5131E49CDD000425F1F /* XWSqliteToolCase.m */; };
-		2EFE2C621E4AD065002C8E69 /* XWSqliteModelTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EFE2C611E4AD065002C8E69 /* XWSqliteModelTool.m */; };
-		2EFE2C651E4AD1B5002C8E69 /* XWXModelTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EFE2C641E4AD1B5002C8E69 /* XWXModelTool.m */; };
 		2EFE2C6B1E4AD301002C8E69 /* XWStuModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EFE2C6A1E4AD301002C8E69 /* XWStuModel.m */; };
-		2EFE2C6F1E4B15AF002C8E69 /* XWSqliteTableTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EFE2C6E1E4B15AF002C8E69 /* XWSqliteTableTool.m */; };
 		4347CCE2A055F43C8DB3CF77 /* Pods_XWSqliteTool_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12565A017AB7C1FDA4A8C8F5 /* Pods_XWSqliteTool_Tests.framework */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
@@ -53,22 +53,22 @@
 
 /* Begin PBXFileReference section */
 		12565A017AB7C1FDA4A8C8F5 /* Pods_XWSqliteTool_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_XWSqliteTool_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2E229AF81EE111A200496562 /* XWSqliteModelTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWSqliteModelTool.h; sourceTree = "<group>"; };
+		2E229AF91EE111A200496562 /* XWSqliteModelTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWSqliteModelTool.m; sourceTree = "<group>"; };
+		2E229AFA1EE111A200496562 /* XWSqliteTableTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWSqliteTableTool.h; sourceTree = "<group>"; };
+		2E229AFB1EE111A200496562 /* XWSqliteTableTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWSqliteTableTool.m; sourceTree = "<group>"; };
+		2E229AFC1EE111A200496562 /* XWSqliteTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWSqliteTool.h; sourceTree = "<group>"; };
+		2E229AFD1EE111A200496562 /* XWSqliteTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWSqliteTool.m; sourceTree = "<group>"; };
+		2E229AFE1EE111A200496562 /* XWXModelProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWXModelProtocol.h; sourceTree = "<group>"; };
+		2E229AFF1EE111A200496562 /* XWXModelTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWXModelTool.h; sourceTree = "<group>"; };
+		2E229B001EE111A200496562 /* XWXModelTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWXModelTool.m; sourceTree = "<group>"; };
 		2E41D48F1E49765D00425F1F /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
-		2E41D4921E49767B00425F1F /* XWSqliteTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWSqliteTool.h; sourceTree = "<group>"; };
-		2E41D4931E49767B00425F1F /* XWSqliteTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWSqliteTool.m; sourceTree = "<group>"; };
 		2E41D5091E49CCEA00425F1F /* XWSqliteTool_ExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XWSqliteTool_ExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E41D50B1E49CCEA00425F1F /* XWSqliteTool_ExampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XWSqliteTool_ExampleTests.m; sourceTree = "<group>"; };
 		2E41D50D1E49CCEA00425F1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2E41D5131E49CDD000425F1F /* XWSqliteToolCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWSqliteToolCase.m; sourceTree = "<group>"; };
-		2EFE2C601E4AD065002C8E69 /* XWSqliteModelTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWSqliteModelTool.h; sourceTree = "<group>"; };
-		2EFE2C611E4AD065002C8E69 /* XWSqliteModelTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWSqliteModelTool.m; sourceTree = "<group>"; };
-		2EFE2C631E4AD1B5002C8E69 /* XWXModelTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWXModelTool.h; sourceTree = "<group>"; };
-		2EFE2C641E4AD1B5002C8E69 /* XWXModelTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWXModelTool.m; sourceTree = "<group>"; };
 		2EFE2C691E4AD301002C8E69 /* XWStuModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWStuModel.h; sourceTree = "<group>"; };
 		2EFE2C6A1E4AD301002C8E69 /* XWStuModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWStuModel.m; sourceTree = "<group>"; };
-		2EFE2C6C1E4AFC5E002C8E69 /* XWXModelProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWXModelProtocol.h; sourceTree = "<group>"; };
-		2EFE2C6D1E4B15AF002C8E69 /* XWSqliteTableTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWSqliteTableTool.h; sourceTree = "<group>"; };
-		2EFE2C6E1E4B15AF002C8E69 /* XWSqliteTableTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWSqliteTableTool.m; sourceTree = "<group>"; };
 		2FCA94AB237F0197DE0BDFF6 /* Pods-XWSqliteTool_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XWSqliteTool_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-XWSqliteTool_Example/Pods-XWSqliteTool_Example.release.xcconfig"; sourceTree = "<group>"; };
 		41E057E5DAF0DDB9017A8201 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		517E11D9B301E3341640E2A8 /* Pods-XWSqliteTool_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XWSqliteTool_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-XWSqliteTool_Tests/Pods-XWSqliteTool_Tests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -134,18 +134,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2E41D4911E49766F00425F1F /* XWSqliteTool */ = {
+		2E229AF71EE111A200496562 /* XWSqliteTool */ = {
 			isa = PBXGroup;
 			children = (
-				2E41D4921E49767B00425F1F /* XWSqliteTool.h */,
-				2E41D4931E49767B00425F1F /* XWSqliteTool.m */,
-				2EFE2C601E4AD065002C8E69 /* XWSqliteModelTool.h */,
-				2EFE2C611E4AD065002C8E69 /* XWSqliteModelTool.m */,
-				2EFE2C631E4AD1B5002C8E69 /* XWXModelTool.h */,
-				2EFE2C641E4AD1B5002C8E69 /* XWXModelTool.m */,
-				2EFE2C6C1E4AFC5E002C8E69 /* XWXModelProtocol.h */,
-				2EFE2C6D1E4B15AF002C8E69 /* XWSqliteTableTool.h */,
-				2EFE2C6E1E4B15AF002C8E69 /* XWSqliteTableTool.m */,
+				2E229AF81EE111A200496562 /* XWSqliteModelTool.h */,
+				2E229AF91EE111A200496562 /* XWSqliteModelTool.m */,
+				2E229AFA1EE111A200496562 /* XWSqliteTableTool.h */,
+				2E229AFB1EE111A200496562 /* XWSqliteTableTool.m */,
+				2E229AFC1EE111A200496562 /* XWSqliteTool.h */,
+				2E229AFD1EE111A200496562 /* XWSqliteTool.m */,
+				2E229AFE1EE111A200496562 /* XWXModelProtocol.h */,
+				2E229AFF1EE111A200496562 /* XWXModelTool.h */,
+				2E229B001EE111A200496562 /* XWXModelTool.m */,
 			);
 			path = XWSqliteTool;
 			sourceTree = "<group>";
@@ -200,7 +200,7 @@
 		6003F593195388D20070C39A /* Example for XWSqliteTool */ = {
 			isa = PBXGroup;
 			children = (
-				2E41D4911E49766F00425F1F /* XWSqliteTool */,
+				2E229AF71EE111A200496562 /* XWSqliteTool */,
 				6003F59C195388D20070C39A /* XWAppDelegate.h */,
 				6003F59D195388D20070C39A /* XWAppDelegate.m */,
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
@@ -509,14 +509,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2E41D4941E49767B00425F1F /* XWSqliteTool.m in Sources */,
 				6003F59E195388D20070C39A /* XWAppDelegate.m in Sources */,
-				2EFE2C621E4AD065002C8E69 /* XWSqliteModelTool.m in Sources */,
-				2EFE2C651E4AD1B5002C8E69 /* XWXModelTool.m in Sources */,
+				2E229B021EE111A200496562 /* XWSqliteTableTool.m in Sources */,
+				2E229B031EE111A200496562 /* XWSqliteTool.m in Sources */,
 				2EFE2C6B1E4AD301002C8E69 /* XWStuModel.m in Sources */,
-				2EFE2C6F1E4B15AF002C8E69 /* XWSqliteTableTool.m in Sources */,
+				2E229B011EE111A200496562 /* XWSqliteModelTool.m in Sources */,
 				6003F5A7195388D20070C39A /* XWViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
+				2E229B041EE111A200496562 /* XWXModelTool.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
