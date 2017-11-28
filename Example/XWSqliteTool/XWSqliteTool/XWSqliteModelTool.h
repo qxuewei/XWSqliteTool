@@ -15,20 +15,32 @@
 +(BOOL)isTableRequiredUpdate:(Class)cls uid:(NSString *)uid;
 /// 倘若需要更新,则更新已有数据库表
 +(BOOL)updateTableFromCls:(Class)cls uid:(NSString *)uid;
+
 /**
  传入模型进行本地数据新增或更新 - 若存在则更新所以字段,所不存在则插入本条数据
  
  @param obj 要插入的模型
  @return 最终SQL语句
  */
-+ (NSString *)insertOrUpdateDataToSQLiteWithModel:(NSObject <XWXModelProtocol>*)obj uid:(NSString *)uid;
++ (NSString *)sql_insertOrUpdateDataToSQLiteWithModel:(NSObject <XWXModelProtocol>*)obj uid:(NSString *)uid;
+
+/**
+ 对模型进行本地数据库新增或更新 - 若存在则更新所以字段,所不存在则插入本条数据
+ 
+ @param obj 模型
+ @param isUpdateTable 是否检查数据库表更新
+ @return 更新结果
+ */
++ (BOOL)insertOrUpdateDataToSQLiteWithModel:(NSObject <XWXModelProtocol>*)obj uid:(NSString *)uid isUpdateTable:(BOOL)isUpdateTable;
+
 /**
  对模型数组进行本地数据库新增或更新 - 若存在则更新所以字段,所不存在则插入本条数据
  
  @param objs 模型数组
+ @param isUpdateTable 是否检查数据库表更新
  @return 更新结果
  */
-+ (BOOL)insertOrUpdateDataToSQLiteWithModels:(NSArray <NSObject <XWXModelProtocol>*>*)objs uid:(NSString *)uid;
++ (BOOL)insertOrUpdateDataToSQLiteWithModels:(NSArray <NSObject <XWXModelProtocol>*>*)objs uid:(NSString *)uid isUpdateTable:(BOOL)isUpdateTable;
 
 /**
  传入模型主键值提取数据库中存储的此模型数据

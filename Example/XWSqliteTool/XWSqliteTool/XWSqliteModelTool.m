@@ -86,7 +86,7 @@
  @param obj 要插入的模型
  @return 最终SQL语句
  */
-+ (NSString *)insertOrUpdateDataToSQLiteWithModel:(NSObject <XWXModelProtocol>*)obj uid:(NSString *)uid {
++ (NSString *)sql_insertOrUpdateDataToSQLiteWithModel:(NSObject <XWXModelProtocol>*)obj uid:(NSString *)uid {
     if (!obj) {
         return NULL;
     }
@@ -137,9 +137,10 @@
  对模型数组进行本地数据库新增或更新 - 若存在则更新所以字段,所不存在则插入本条数据
 
  @param objs 模型数组
+ @param isUpdateTable 是否检查数据库表更新
  @return 更新结果
  */
-+ (BOOL)insertOrUpdateDataToSQLiteWithModels:(NSArray <NSObject <XWXModelProtocol>*>*)objs uid:(NSString *)uid{
++ (BOOL)insertOrUpdateDataToSQLiteWithModels:(NSArray <NSObject <XWXModelProtocol>*>*)objs uid:(NSString *)uid isUpdateTable:(BOOL)isUpdateTable{
     if (objs.count == 0) {
         return NO;
     }
@@ -153,17 +154,48 @@
         NSLog(@"用 %@ 模型新建数据库失败!",NSStringFromClass(objClass));
         return NO;
     }
-    
-    if (![self toUpdateTable:objClass uid:uid]) {
-        NSLog(@"检测到 %@ 模型字段更改,对应的数据库迁移失败!",NSStringFromClass(objClass));
-        return NULL;
+    if (isUpdateTable) {    
+        if (![self toUpdateTable:objClass uid:uid]) {
+            NSLog(@"检测到 %@ 模型字段更改,对应的数据库迁移失败!",NSStringFromClass(objClass));
+            return NULL;
+        }
     }
     
     NSMutableArray *sqls = [NSMutableArray array];
     for (NSObject <XWXModelProtocol>*obj in objs) {
-        [sqls addObject:[self insertOrUpdateDataToSQLiteWithModel:obj uid:uid]];
+        [sqls addObject:[self sql_insertOrUpdateDataToSQLiteWithModel:obj uid:uid]];
     }
     return [XWSqliteTool dealSqls:sqls uid:uid];
+}
+
+/**
+ 对模型进行本地数据库新增或更新 - 若存在则更新所以字段,所不存在则插入本条数据
+ 
+ @param objs 模型数组
+ @param isUpdateTable 是否检查数据库表更新
+ @return 更新结果
+ */
++ (BOOL)insertOrUpdateDataToSQLiteWithModel:(NSObject <XWXModelProtocol>*)obj uid:(NSString *)uid isUpdateTable:(BOOL)isUpdateTable{
+    if (!obj) {
+        return NO;
+    }
+    Class objClass = [obj class];
+    if (![objClass respondsToSelector:@selector(primaryKey)]) {
+        NSLog(@"倘若希望使用 %@ 模型数组进行本地数据库新增或更新,需要实现 +(NSString *)primaryKey; 类方法(准守XWXModelProtocol协议)",NSStringFromClass(objClass));
+        return NO;
+    }
+    
+    if (![XWSqliteModelTool createTableFromCls:objClass uid:uid]) {
+        NSLog(@"用 %@ 模型新建数据库失败!",NSStringFromClass(objClass));
+        return NO;
+    }
+    if (isUpdateTable) {
+        if (![self toUpdateTable:objClass uid:uid]) {
+            NSLog(@"检测到 %@ 模型字段更改,对应的数据库迁移失败!",NSStringFromClass(objClass));
+            return NULL;
+        }
+    }
+    return [XWSqliteTool deal:[self sql_insertOrUpdateDataToSQLiteWithModel:obj uid:uid] uid:uid];
 }
 
 
