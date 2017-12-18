@@ -103,6 +103,17 @@
     NSLog(@"%@",stu);
 }
 
+- (void)testObjectPropertyFromDatabaseWithPrimaryKey {
+    id value = [XWSqliteModelTool valueFromDatabaseWithPrimaryKey:@"4" modelCls:[XWStuModel class]  propertyKey:@"name" uid:nil];
+    NSLog(@"%@",value);
+}
+
+- (void)testObjectPropertysFromDatabaseWithPrimaryKey {
+    id stu = [XWSqliteModelTool valuesFromDatabaseWithPrimaryKey:@"4" modelCls:[XWStuModel class] propertyKeys:@[@"name",@"age"] uid:nil];
+    XWStuModel *stuM = (XWStuModel *)stu;
+    NSLog(@"name:%@  age:%zd",stuM.name,stuM.age);
+}
+
 - (XWStuModel *)stuModelWithStuNum:(int)stuNum {
     
     XWStuModel *stuM = [[XWStuModel alloc] init];
