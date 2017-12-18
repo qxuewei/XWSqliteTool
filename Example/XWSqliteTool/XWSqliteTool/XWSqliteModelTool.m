@@ -132,7 +132,6 @@
     }
 }
 
-
 /**
  对模型数组进行本地数据库新增或更新 - 若存在则更新所以字段,所不存在则插入本条数据
 
@@ -198,6 +197,30 @@
     return [XWSqliteTool deal:[self sql_insertOrUpdateDataToSQLiteWithModel:obj uid:uid] uid:uid];
 }
 
+/**
+ 更新数据库中某单独字段 (保证数据表库中此数据必须存在)
+
+ @param propertyKey 要更新的属性字段
+ @param propertyValue 属性值
+ @param primaryKeyObject 主键值
+ @param objClass 模型类
+ @param uid UID
+ @return 是否更新成功
+ */
++ (BOOL)insertOrUpdateDataToSQLiteWithPropertyKey:(NSString *)propertyKey propertyValue:(id)propertyValue primaryKeyObject:(NSString *)primaryKeyObject modelCls:(Class)objClass uid:(NSString *)uid {
+    if (!propertyValue || propertyKey.length == 0) {
+        return NO;
+    }
+    if (![objClass respondsToSelector:@selector(primaryKey)]) {
+        NSLog(@"倘若希望使用 %@ 模型数组进行本地数据库新增或更新,需要实现 +(NSString *)primaryKey; 类方法(准守XWXModelProtocol协议)",NSStringFromClass(objClass));
+        return NO;
+    }
+    if (![XWSqliteModelTool createTableFromCls:objClass uid:uid]) {
+        NSLog(@"用 %@ 模型新建数据库失败!",NSStringFromClass(objClass));
+        return NO;
+    }
+    return [XWSqliteTool deal:[self sql_insertOrUpdateDataToSQLiteWithPropertyKey:propertyKey propertyValue:propertyValue primaryKeyObject:primaryKeyObject modelCls:objClass uid:uid] uid:uid];
+}
 
 /**
  传入模型主键值提取数据库中存储的此模型数据
@@ -339,6 +362,31 @@
         return YES;
     }
     return [self updateTableFromCls:cls uid:uid];
+}
+/**
+ 
+ 
+ @param obj 要插入的模型
+ @return 最终SQL语句
+ */
+
+/**
+ 更新单个模型某属性值
+
+ @param propertyKey 要更新的属性
+ @param propertyValue 要更新的属性值
+ @param primaryKeyObject 主键值
+ @param objClass 模型类
+ @param uid 用户ID
+ @return 更新的sql语句
+ */
++ (NSString *)sql_insertOrUpdateDataToSQLiteWithPropertyKey:(NSString *)propertyKey propertyValue:(id)propertyValue primaryKeyObject:(NSString *)primaryKeyObject modelCls:(Class)objClass uid:(NSString *)uid {
+    // 主键
+    NSString *primaryKeyStr = [objClass primaryKey];
+    // 数据库表名
+    NSString *tableName = [XWXModelTool tableNameWithCls:objClass];
+    NSString *sql = [NSString stringWithFormat:@"UPDATE %@ SET %@ WHERE %@ = '%@'",tableName,[NSString stringWithFormat:@"%@ = '%@'",propertyKey,propertyValue],primaryKeyStr,primaryKeyObject];
+    return sql;
 }
 
 

@@ -54,6 +54,18 @@
 + (BOOL)insertOrUpdateDataToSQLiteWithModel:(NSObject <XWXModelProtocol>*)obj uid:(NSString *)uid isUpdateTable:(BOOL)isUpdateTable;
 
 /**
+ 更新数据库中某单独字段 (保证数据表库中此数据必须存在)
+ 
+ @param propertyKey 要更新的属性字段
+ @param propertyValue 属性值
+ @param primaryKeyObject 主键值
+ @param objClass 模型类
+ @param uid UID
+ @return 是否更新成功
+ */
++ (BOOL)insertOrUpdateDataToSQLiteWithPropertyKey:(NSString *)propertyKey propertyValue:(id)propertyValue primaryKeyObject:(NSString *)primaryKeyObject modelCls:(Class)objClass uid:(NSString *)uid;
+
+/**
  对模型数组进行本地数据库新增或更新 - 若存在则更新所以字段,所不存在则插入本条数据
  
  @param objs 模型数组

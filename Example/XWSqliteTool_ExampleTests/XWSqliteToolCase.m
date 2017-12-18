@@ -114,6 +114,11 @@
     NSLog(@"name:%@  age:%zd",stuM.name,stuM.age);
 }
 
+- (void)testInsertOrUpdateDataToSQLiteWithPropertyKey {
+    BOOL isS = [XWSqliteModelTool insertOrUpdateDataToSQLiteWithPropertyKey:@"name" propertyValue:@"qiuxuewei" primaryKeyObject:@"4" modelCls:[XWStuModel class] uid:nil];
+    XCTAssertTrue(isS);
+}
+
 - (XWStuModel *)stuModelWithStuNum:(int)stuNum {
     
     XWStuModel *stuM = [[XWStuModel alloc] init];
