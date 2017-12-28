@@ -98,8 +98,8 @@
     
 }
 
-- (void)testObjectFromDatabaseWithPrimaryKey {
-    id stu = [XWSqliteModelTool objectFromDatabaseWithPrimaryKey:@"4" modelCls:[XWStuModel class] uid:nil];
+- (void)testobjectFromDatabaseWithPrimaryValue {
+    id stu = [XWSqliteModelTool objectFromDatabaseWithPrimaryValue:@"4" modelCls:[XWStuModel class] uid:nil];
     NSLog(@"%@",stu);
 }
 
@@ -117,6 +117,14 @@
 - (void)testInsertOrUpdateDataToSQLiteWithPropertyKey {
     BOOL isS = [XWSqliteModelTool insertOrUpdateDataToSQLiteWithPropertyKey:@"name" propertyValue:@"qiuxuewei" primaryKeyObject:@"4" modelCls:[XWStuModel class] uid:nil];
     XCTAssertTrue(isS);
+}
+
+- (void)testObjectsFromDatabaseWithSortKey {
+    NSArray *arr = [XWSqliteModelTool objectsFromDatabaseWithSortKey:@"age" isOrderDesc:NO modelCls:[XWStuModel class] uid:nil];
+    for (XWStuModel *stu in arr) {
+        NSLog(@"%zd",stu.age);
+    }
+    
 }
 
 - (XWStuModel *)stuModelWithStuNum:(int)stuNum {

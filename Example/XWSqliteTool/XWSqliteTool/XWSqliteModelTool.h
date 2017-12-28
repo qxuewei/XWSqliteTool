@@ -77,12 +77,24 @@
 /**
  传入模型主键值提取数据库中存储的此模型数据
  
- @param primaryKey 主键值
+ @param primaryValue 主键值
  @param cls 模型类
  @param uid uid
  @return 数据库主键为primaryKey的模型
  */
-+ (id <XWXModelProtocol>)objectFromDatabaseWithPrimaryKey:(NSString *)primaryKey modelCls:(Class)cls uid:(NSString *)uid;
++ (id <XWXModelProtocol>)objectFromDatabaseWithPrimaryValue:(NSString *)primaryValue modelCls:(Class)cls uid:(NSString *)uid;
+
+/**
+ 传入排序字段获取数据库模型表中所有数据
+ select * from person order by id desc
+ asc是表示升序，desc表示降序。
+ @param sortKey 排序按照的字段
+ @param isOrderDesc 是否降序
+ @param cls 模型类
+ @param uid uid
+ @return 排好序的数据库模型表中所有数据
+ */
++ (NSArray <id<XWXModelProtocol>> *)objectsFromDatabaseWithSortKey:(NSString *)sortKey isOrderDesc:(BOOL)isOrderDesc modelCls:(Class)cls uid:(NSString *)uid;
 
 /**
  传入模型主键值提取数据库中存储的此模型某字段数据

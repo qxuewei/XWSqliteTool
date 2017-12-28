@@ -225,13 +225,13 @@
 /**
  传入模型主键值提取数据库中存储的此模型数据
 
- @param primaryKey 主键值
+ @param primaryValue 主键值
  @param cls 模型类
  @param uid uid
  @return 数据库主键为primaryKey的模型
  */
-+ (id <XWXModelProtocol>)objectFromDatabaseWithPrimaryKey:(NSString *)primaryKey modelCls:(Class)cls uid:(NSString *)uid {
-    if (primaryKey.length == 0 || primaryKey == NULL || [primaryKey isEqualToString:@"'(null)'"]) {
++ (id <XWXModelProtocol>)objectFromDatabaseWithPrimaryValue:(NSString *)primaryValue  modelCls:(Class)cls uid:(NSString *)uid {
+    if (primaryValue.length == 0 || primaryValue == NULL || [primaryValue isEqualToString:@"'(null)'"]) {
         NSLog(@"请传入主键");
         return NULL;
     }
@@ -247,19 +247,57 @@
     NSString *tableName = [XWXModelTool tableNameWithCls:cls];
     // 主键
     NSString *primaryKeyStr = [cls primaryKey];
-    NSString *querySql = [NSString stringWithFormat:@"SELECT * FROM %@ where %@ = '%@'",tableName,primaryKeyStr,primaryKey];
+    NSString *querySql = [NSString stringWithFormat:@"SELECT * FROM %@ where %@ = '%@'",tableName,primaryKeyStr,primaryValue];
     NSMutableArray *queryResult = [XWSqliteTool querySql:querySql uid:uid];
     // 模型数据字典
     NSDictionary *modelDict = [queryResult objectAtIndex:0];
     
-    Class GiftModelClass = [cls class];
-    id object = [[GiftModelClass alloc] init];
+    Class xxModelClass = [cls class];
+    id object = [[xxModelClass alloc] init];
     [modelDict enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
         if (obj && [allPropertyStrs containsObject:key]) {
             [object setValue:obj forKey:key];
         }
     }];
     return (id<XWXModelProtocol>)object;
+}
+
+/**
+ 传入排序字段获取数据库模型表中所有数据
+ select * from person order by id desc
+ asc是表示升序，desc表示降序。
+ @param sortKey 排序按照的字段
+ @param isOrderDesc 是否降序
+ @param cls 模型类
+ @param uid uid
+ @return 排好序的数据库模型表中所有数据
+ */
++ (NSArray <id<XWXModelProtocol>> *)objectsFromDatabaseWithSortKey:(NSString *)sortKey isOrderDesc:(BOOL)isOrderDesc modelCls:(Class)cls uid:(NSString *)uid {
+    if (sortKey.length == 0 || sortKey == NULL || [sortKey isEqualToString:@"'(null)'"]) {
+        NSLog(@"请传入排序字段");
+        return NULL;
+    }
+    // 成员属性 = 数据库对应类型
+    NSDictionary *ivarNameTypeDict = [XWXModelTool classIvarNameTypeDic:cls];
+    // 所有成员属性
+    NSArray <NSString *>*allPropertyStrs = [ivarNameTypeDict allKeys];
+    // 数据库表名
+    NSString *tableName = [XWXModelTool tableNameWithCls:cls];
+    NSString *querySql = [NSString stringWithFormat:@"SELECT * FROM %@ order by %@ %@ ",tableName,sortKey,isOrderDesc?@"desc":@""];
+    NSMutableArray *queryResult = [XWSqliteTool querySql:querySql uid:uid];
+    NSMutableArray *objects = [[NSMutableArray alloc] init];
+    [queryResult enumerateObjectsUsingBlock:^(NSDictionary *modelDict, NSUInteger idx, BOOL * _Nonnull stop) {
+        Class xxModelClass = [cls class];
+        id object = [[xxModelClass alloc] init];
+        // 模型数据字典
+        [modelDict enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+            if (obj && [allPropertyStrs containsObject:key]) {
+                [object setValue:obj forKey:key];
+            }
+        }];
+        [objects addObject:xxModelClass];
+    }];
+    return objects;
 }
 
 
@@ -346,8 +384,8 @@
     // 模型数据字典
     NSDictionary *modelDict = [queryResult objectAtIndex:0];
     
-    Class GiftModelClass = [cls class];
-    id object = [[GiftModelClass alloc] init];
+    Class xxModelClass = [cls class];
+    id object = [[xxModelClass alloc] init];
     [modelDict enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
         if (obj && [allPropertyStrs containsObject:key]) {
             [object setValue:obj forKey:key];
