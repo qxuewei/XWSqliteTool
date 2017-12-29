@@ -120,7 +120,7 @@
 }
 
 - (void)testObjectsFromDatabaseWithSortKey {
-    NSArray *arr = [XWSqliteModelTool objectsFromDatabaseWithSortKey:@"age" isOrderDesc:NO modelCls:[XWStuModel class] uid:nil];
+    NSArray *arr = [XWSqliteModelTool objectsFromDatabaseWithSortKey:@"age" isOrderDesc:YES modelCls:[XWStuModel class] uid:nil];
     for (XWStuModel *stu in arr) {
         NSLog(@"%zd",stu.age);
     }

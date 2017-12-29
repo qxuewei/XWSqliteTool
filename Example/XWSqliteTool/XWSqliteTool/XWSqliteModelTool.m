@@ -288,14 +288,14 @@
     NSMutableArray *objects = [[NSMutableArray alloc] init];
     [queryResult enumerateObjectsUsingBlock:^(NSDictionary *modelDict, NSUInteger idx, BOOL * _Nonnull stop) {
         Class xxModelClass = [cls class];
-        id object = [[xxModelClass alloc] init];
+        id xxModelObject = [[xxModelClass alloc] init];
         // 模型数据字典
         [modelDict enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
             if (obj && [allPropertyStrs containsObject:key]) {
-                [object setValue:obj forKey:key];
+                [xxModelObject setValue:obj forKey:key];
             }
         }];
-        [objects addObject:xxModelClass];
+        [objects addObject:xxModelObject];
     }];
     return objects;
 }
