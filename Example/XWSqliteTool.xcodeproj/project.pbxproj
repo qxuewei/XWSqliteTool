@@ -8,10 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		056D8229002D3A27B2651A5A /* Pods_XWSqliteTool_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D688824E19C40436A4FECC1A /* Pods_XWSqliteTool_Example.framework */; };
-		2E229B011EE111A200496562 /* XWSqliteModelTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E229AF91EE111A200496562 /* XWSqliteModelTool.m */; };
-		2E229B021EE111A200496562 /* XWSqliteTableTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E229AFB1EE111A200496562 /* XWSqliteTableTool.m */; };
-		2E229B031EE111A200496562 /* XWSqliteTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E229AFD1EE111A200496562 /* XWSqliteTool.m */; };
-		2E229B041EE111A200496562 /* XWXModelTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E229B001EE111A200496562 /* XWXModelTool.m */; };
 		2E41D4901E49765D00425F1F /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E41D48F1E49765D00425F1F /* libsqlite3.0.tbd */; };
 		2E41D50C1E49CCEA00425F1F /* XWSqliteTool_ExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E41D50B1E49CCEA00425F1F /* XWSqliteTool_ExampleTests.m */; };
 		2E41D5141E49CDD000425F1F /* XWSqliteToolCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E41D5131E49CDD000425F1F /* XWSqliteToolCase.m */; };
@@ -32,6 +28,12 @@
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
 		71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
+		DE171BA92074CC59003E180E /* XWSqliteModelTool.m in Sources */ = {isa = PBXBuildFile; fileRef = DE171BA42074CC59003E180E /* XWSqliteModelTool.m */; };
+		DE171BAA2074CC59003E180E /* XWSqliteTool.m in Sources */ = {isa = PBXBuildFile; fileRef = DE171BA52074CC59003E180E /* XWSqliteTool.m */; };
+		DE171BAB2074CC59003E180E /* XWSqliteTableTool.m in Sources */ = {isa = PBXBuildFile; fileRef = DE171BA72074CC59003E180E /* XWSqliteTableTool.m */; };
+		DE171BAC2074CC59003E180E /* XWXModelTool.m in Sources */ = {isa = PBXBuildFile; fileRef = DE171BA82074CC59003E180E /* XWXModelTool.m */; };
+		DE171BB22074CCF4003E180E /* XWSqliteModelToolFM.m in Sources */ = {isa = PBXBuildFile; fileRef = DE171BB02074CCF3003E180E /* XWSqliteModelToolFM.m */; };
+		DE171BB52074CDE6003E180E /* XWFMDBTool.m in Sources */ = {isa = PBXBuildFile; fileRef = DE171BB42074CDE6003E180E /* XWFMDBTool.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,15 +55,6 @@
 
 /* Begin PBXFileReference section */
 		12565A017AB7C1FDA4A8C8F5 /* Pods_XWSqliteTool_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_XWSqliteTool_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		2E229AF81EE111A200496562 /* XWSqliteModelTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWSqliteModelTool.h; sourceTree = "<group>"; };
-		2E229AF91EE111A200496562 /* XWSqliteModelTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWSqliteModelTool.m; sourceTree = "<group>"; };
-		2E229AFA1EE111A200496562 /* XWSqliteTableTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWSqliteTableTool.h; sourceTree = "<group>"; };
-		2E229AFB1EE111A200496562 /* XWSqliteTableTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWSqliteTableTool.m; sourceTree = "<group>"; };
-		2E229AFC1EE111A200496562 /* XWSqliteTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWSqliteTool.h; sourceTree = "<group>"; };
-		2E229AFD1EE111A200496562 /* XWSqliteTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWSqliteTool.m; sourceTree = "<group>"; };
-		2E229AFE1EE111A200496562 /* XWXModelProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWXModelProtocol.h; sourceTree = "<group>"; };
-		2E229AFF1EE111A200496562 /* XWXModelTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWXModelTool.h; sourceTree = "<group>"; };
-		2E229B001EE111A200496562 /* XWXModelTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWXModelTool.m; sourceTree = "<group>"; };
 		2E41D48F1E49765D00425F1F /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		2E41D5091E49CCEA00425F1F /* XWSqliteTool_ExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XWSqliteTool_ExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E41D50B1E49CCEA00425F1F /* XWSqliteTool_ExampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XWSqliteTool_ExampleTests.m; sourceTree = "<group>"; };
@@ -97,6 +90,19 @@
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A4720A9E52F7A6DFA2011DB9 /* Pods-XWSqliteTool_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XWSqliteTool_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-XWSqliteTool_Tests/Pods-XWSqliteTool_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		D688824E19C40436A4FECC1A /* Pods_XWSqliteTool_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_XWSqliteTool_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE171BA02074CC59003E180E /* XWSqliteTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWSqliteTool.h; sourceTree = "<group>"; };
+		DE171BA12074CC59003E180E /* XWSqliteModelTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWSqliteModelTool.h; sourceTree = "<group>"; };
+		DE171BA22074CC59003E180E /* XWSqliteTableTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWSqliteTableTool.h; sourceTree = "<group>"; };
+		DE171BA32074CC59003E180E /* XWXModelTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWXModelTool.h; sourceTree = "<group>"; };
+		DE171BA42074CC59003E180E /* XWSqliteModelTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWSqliteModelTool.m; sourceTree = "<group>"; };
+		DE171BA52074CC59003E180E /* XWSqliteTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWSqliteTool.m; sourceTree = "<group>"; };
+		DE171BA62074CC59003E180E /* XWXModelProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWXModelProtocol.h; sourceTree = "<group>"; };
+		DE171BA72074CC59003E180E /* XWSqliteTableTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWSqliteTableTool.m; sourceTree = "<group>"; };
+		DE171BA82074CC59003E180E /* XWXModelTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWXModelTool.m; sourceTree = "<group>"; };
+		DE171BB02074CCF3003E180E /* XWSqliteModelToolFM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWSqliteModelToolFM.m; sourceTree = "<group>"; };
+		DE171BB12074CCF4003E180E /* XWSqliteModelToolFM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWSqliteModelToolFM.h; sourceTree = "<group>"; };
+		DE171BB32074CDE6003E180E /* XWFMDBTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XWFMDBTool.h; sourceTree = "<group>"; };
+		DE171BB42074CDE6003E180E /* XWFMDBTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XWFMDBTool.m; sourceTree = "<group>"; };
 		EDDD71E4EACD41785A0F4D98 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -134,22 +140,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2E229AF71EE111A200496562 /* XWSqliteTool */ = {
-			isa = PBXGroup;
-			children = (
-				2E229AF81EE111A200496562 /* XWSqliteModelTool.h */,
-				2E229AF91EE111A200496562 /* XWSqliteModelTool.m */,
-				2E229AFA1EE111A200496562 /* XWSqliteTableTool.h */,
-				2E229AFB1EE111A200496562 /* XWSqliteTableTool.m */,
-				2E229AFC1EE111A200496562 /* XWSqliteTool.h */,
-				2E229AFD1EE111A200496562 /* XWSqliteTool.m */,
-				2E229AFE1EE111A200496562 /* XWXModelProtocol.h */,
-				2E229AFF1EE111A200496562 /* XWXModelTool.h */,
-				2E229B001EE111A200496562 /* XWXModelTool.m */,
-			);
-			path = XWSqliteTool;
-			sourceTree = "<group>";
-		};
 		2E41D50A1E49CCEA00425F1F /* XWSqliteTool_ExampleTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -200,7 +190,7 @@
 		6003F593195388D20070C39A /* Example for XWSqliteTool */ = {
 			isa = PBXGroup;
 			children = (
-				2E229AF71EE111A200496562 /* XWSqliteTool */,
+				DE171B9F2074CC59003E180E /* XWSqliteTool */,
 				6003F59C195388D20070C39A /* XWAppDelegate.h */,
 				6003F59D195388D20070C39A /* XWAppDelegate.m */,
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
@@ -267,6 +257,26 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		DE171B9F2074CC59003E180E /* XWSqliteTool */ = {
+			isa = PBXGroup;
+			children = (
+				DE171BB12074CCF4003E180E /* XWSqliteModelToolFM.h */,
+				DE171BB02074CCF3003E180E /* XWSqliteModelToolFM.m */,
+				DE171BA12074CC59003E180E /* XWSqliteModelTool.h */,
+				DE171BA42074CC59003E180E /* XWSqliteModelTool.m */,
+				DE171BA22074CC59003E180E /* XWSqliteTableTool.h */,
+				DE171BA72074CC59003E180E /* XWSqliteTableTool.m */,
+				DE171BA02074CC59003E180E /* XWSqliteTool.h */,
+				DE171BA52074CC59003E180E /* XWSqliteTool.m */,
+				DE171BB32074CDE6003E180E /* XWFMDBTool.h */,
+				DE171BB42074CDE6003E180E /* XWFMDBTool.m */,
+				DE171BA62074CC59003E180E /* XWXModelProtocol.h */,
+				DE171BA32074CC59003E180E /* XWXModelTool.h */,
+				DE171BA82074CC59003E180E /* XWXModelTool.m */,
+			);
+			path = XWSqliteTool;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -297,7 +307,6 @@
 				6003F587195388D20070C39A /* Frameworks */,
 				6003F588195388D20070C39A /* Resources */,
 				BB0BDD57F6CC09A59BFE9E97 /* [CP] Embed Pods Frameworks */,
-				6CB2057897DC5DEBE74F53F2 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -316,8 +325,6 @@
 				6003F5AA195388D20070C39A /* Sources */,
 				6003F5AB195388D20070C39A /* Frameworks */,
 				6003F5AC195388D20070C39A /* Resources */,
-				95E0B65B526835405750F18D /* [CP] Embed Pods Frameworks */,
-				BE8E52C87A704938EE5710A8 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -346,7 +353,7 @@
 						TestTargetID = 6003F589195388D20070C39A;
 					};
 					6003F589195388D20070C39A = {
-						DevelopmentTeam = ZE4J77P8N2;
+						DevelopmentTeam = EFBGB9EWP5;
 					};
 					6003F5AD195388D20070C39A = {
 						TestTargetID = 6003F589195388D20070C39A;
@@ -409,13 +416,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-XWSqliteTool_Example-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		4F30032B654C8AC1D81C4AAC /* [CP] Check Pods Manifest.lock */ = {
@@ -424,43 +434,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-XWSqliteTool_Tests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		6CB2057897DC5DEBE74F53F2 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-XWSqliteTool_Example/Pods-XWSqliteTool_Example-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		95E0B65B526835405750F18D /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-XWSqliteTool_Tests/Pods-XWSqliteTool_Tests-frameworks.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		BB0BDD57F6CC09A59BFE9E97 /* [CP] Embed Pods Frameworks */ = {
@@ -469,28 +452,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-XWSqliteTool_Example/Pods-XWSqliteTool_Example-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/FMDB/FMDB.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FMDB.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-XWSqliteTool_Example/Pods-XWSqliteTool_Example-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		BE8E52C87A704938EE5710A8 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-XWSqliteTool_Tests/Pods-XWSqliteTool_Tests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -509,14 +480,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE171BB22074CCF4003E180E /* XWSqliteModelToolFM.m in Sources */,
+				DE171BB52074CDE6003E180E /* XWFMDBTool.m in Sources */,
+				DE171BAA2074CC59003E180E /* XWSqliteTool.m in Sources */,
 				6003F59E195388D20070C39A /* XWAppDelegate.m in Sources */,
-				2E229B021EE111A200496562 /* XWSqliteTableTool.m in Sources */,
-				2E229B031EE111A200496562 /* XWSqliteTool.m in Sources */,
+				DE171BAB2074CC59003E180E /* XWSqliteTableTool.m in Sources */,
 				2EFE2C6B1E4AD301002C8E69 /* XWStuModel.m in Sources */,
-				2E229B011EE111A200496562 /* XWSqliteModelTool.m in Sources */,
+				DE171BA92074CC59003E180E /* XWSqliteModelTool.m in Sources */,
 				6003F5A7195388D20070C39A /* XWViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
-				2E229B041EE111A200496562 /* XWXModelTool.m in Sources */,
+				DE171BAC2074CC59003E180E /* XWXModelTool.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -708,7 +681,7 @@
 			baseConfigurationReference = 7C545062DBA54E2B9C937DF6 /* Pods-XWSqliteTool_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = ZE4J77P8N2;
+				DEVELOPMENT_TEAM = EFBGB9EWP5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "XWSqliteTool/XWSqliteTool-Prefix.pch";
 				INFOPLIST_FILE = "XWSqliteTool/XWSqliteTool-Info.plist";
@@ -724,7 +697,7 @@
 			baseConfigurationReference = 2FCA94AB237F0197DE0BDFF6 /* Pods-XWSqliteTool_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = ZE4J77P8N2;
+				DEVELOPMENT_TEAM = EFBGB9EWP5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "XWSqliteTool/XWSqliteTool-Prefix.pch";
 				INFOPLIST_FILE = "XWSqliteTool/XWSqliteTool-Info.plist";

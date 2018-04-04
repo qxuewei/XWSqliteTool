@@ -1,7 +1,7 @@
 use_frameworks!
 
 target 'XWSqliteTool_Example' do
-  pod 'XWSqliteTool', :path => '../'
+  pod 'FMDB'
 
   target 'XWSqliteTool_Tests' do
     inherit! :search_paths

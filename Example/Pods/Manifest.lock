@@ -1,16 +1,18 @@
 PODS:
-  - XWSqliteTool (0.1.0)
+  - FMDB (2.7.2):
+    - FMDB/standard (= 2.7.2)
+  - FMDB/standard (2.7.2)
 
 DEPENDENCIES:
-  - XWSqliteTool (from `../`)
+  - FMDB
 
-EXTERNAL SOURCES:
-  XWSqliteTool:
-    :path: "../"
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - FMDB
 
 SPEC CHECKSUMS:
-  XWSqliteTool: 087a94d35fbc64fff6fe87b8f5a77fd6aa357838
+  FMDB: 6198a90e7b6900cfc046e6bc0ef6ebb7be9236aa
 
-PODFILE CHECKSUM: 0f10ef7799e96dc744cbcecc7ad182d088a85cf2
+PODFILE CHECKSUM: b9d5769104d2cbbb89908ffbc1ec3e0fc8577e3c
 
-COCOAPODS: 1.2.0.beta.1
+COCOAPODS: 1.5.0.beta.1

@@ -1,5 +1,5 @@
 //
-//  XWSqliteModelTool.h
+//  XWSqliteModelToolFM.h
 //  XWSqliteTool
 //
 //  Created by 邱学伟 on 2017/2/8.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "XWXModelProtocol.h"
-@interface XWSqliteModelTool : NSObject
+@interface XWSqliteModelToolFM : NSObject
 /**
  根据模型建表
 

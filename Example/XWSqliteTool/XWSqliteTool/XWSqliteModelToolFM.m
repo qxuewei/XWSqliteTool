@@ -1,17 +1,21 @@
 //
-//  XWSqliteModelTool.m
+//  XWSqliteModelToolFM.m
 //  XWSqliteTool
 //
 //  Created by 邱学伟 on 2017/2/8.
 //  Copyright © 2017年 qxuewei@yeah.net. All rights reserved.
 //
 
-#import "XWSqliteModelTool.h"
+#import "XWSqliteModelToolFM.h"
 #import "XWXModelTool.h"
 #import "XWSqliteTool.h"
 #import "XWSqliteTableTool.h"
-@implementation XWSqliteModelTool
+
+#import "XWFMDBTool.h"
+
+@implementation XWSqliteModelToolFM
 +(BOOL)createTableFromCls:(Class)cls uid:(NSString *)uid{
+    
     //建表sql语句
     // create table if not exists 表名(字段1 : 字段1约束, 字段2 : 字段2约束, ... ,primary key(字段))
     NSString *tableName = [XWXModelTool tableNameWithCls:cls];
@@ -149,7 +153,7 @@
         return NO;
     }
     
-    if (![XWSqliteModelTool createTableFromCls:objClass uid:uid]) {
+    if (![XWSqliteModelToolFM createTableFromCls:objClass uid:uid]) {
         NSLog(@"用 %@ 模型新建数据库失败!",NSStringFromClass(objClass));
         return NO;
     }
@@ -184,7 +188,7 @@
         return NO;
     }
     
-    if (![XWSqliteModelTool createTableFromCls:objClass uid:uid]) {
+    if (![XWSqliteModelToolFM createTableFromCls:objClass uid:uid]) {
         NSLog(@"用 %@ 模型新建数据库失败!",NSStringFromClass(objClass));
         return NO;
     }
@@ -215,7 +219,7 @@
         NSLog(@"倘若希望使用 %@ 模型数组进行本地数据库新增或更新,需要实现 +(NSString *)primaryKey; 类方法(准守XWXModelProtocol协议)",NSStringFromClass(objClass));
         return NO;
     }
-    if (![XWSqliteModelTool createTableFromCls:objClass uid:uid]) {
+    if (![XWSqliteModelToolFM createTableFromCls:objClass uid:uid]) {
         NSLog(@"用 %@ 模型新建数据库失败!",NSStringFromClass(objClass));
         return NO;
     }
