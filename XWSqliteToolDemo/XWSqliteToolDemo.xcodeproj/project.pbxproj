@@ -1,0 +1,749 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8855ECCDB3055FAC2C3F62B0 /* libPods-XWSqliteToolDemoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F2EE381DCB43CE7986FD4FD8 /* libPods-XWSqliteToolDemoTests.a */; };
+		B4A805125ABF90FAACA7174C /* libPods-XWSqliteToolDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B29D42DCCF3F4BC52AF4DA1 /* libPods-XWSqliteToolDemo.a */; };
+		B7577CBB0E9C146ECF046655 /* libPods-XWSqliteToolDemoUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 643241B624A9E90F42ECDDCF /* libPods-XWSqliteToolDemoUITests.a */; };
+		DE6E111A2079B867009435AC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DE6E11192079B867009435AC /* AppDelegate.m */; };
+		DE6E111D2079B867009435AC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE6E111C2079B867009435AC /* ViewController.m */; };
+		DE6E11202079B867009435AC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE6E111E2079B867009435AC /* Main.storyboard */; };
+		DE6E11232079B867009435AC /* XWSqliteToolDemo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DE6E11212079B867009435AC /* XWSqliteToolDemo.xcdatamodeld */; };
+		DE6E11252079B869009435AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE6E11242079B869009435AC /* Assets.xcassets */; };
+		DE6E11282079B869009435AC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE6E11262079B869009435AC /* LaunchScreen.storyboard */; };
+		DE6E112B2079B869009435AC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DE6E112A2079B869009435AC /* main.m */; };
+		DE6E11352079B869009435AC /* XWSqliteToolDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DE6E11342079B869009435AC /* XWSqliteToolDemoTests.m */; };
+		DE6E11402079B869009435AC /* XWSqliteToolDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = DE6E113F2079B869009435AC /* XWSqliteToolDemoUITests.m */; };
+		DE6E115B2079BB47009435AC /* XWFMDBTool.m in Sources */ = {isa = PBXBuildFile; fileRef = DE6E11502079BB47009435AC /* XWFMDBTool.m */; };
+		DE6E115C2079BB48009435AC /* XWSqliteModelToolFM.m in Sources */ = {isa = PBXBuildFile; fileRef = DE6E11512079BB47009435AC /* XWSqliteModelToolFM.m */; };
+		DE6E115D2079BB48009435AC /* XWSqliteModelTool.m in Sources */ = {isa = PBXBuildFile; fileRef = DE6E11542079BB47009435AC /* XWSqliteModelTool.m */; };
+		DE6E115E2079BB48009435AC /* XWSqliteTool.m in Sources */ = {isa = PBXBuildFile; fileRef = DE6E11552079BB47009435AC /* XWSqliteTool.m */; };
+		DE6E115F2079BB48009435AC /* XWSqliteTableTool.m in Sources */ = {isa = PBXBuildFile; fileRef = DE6E11582079BB47009435AC /* XWSqliteTableTool.m */; };
+		DE6E11602079BB48009435AC /* XWXModelTool.m in Sources */ = {isa = PBXBuildFile; fileRef = DE6E115A2079BB47009435AC /* XWXModelTool.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		DE6E11312079B869009435AC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DE6E110D2079B867009435AC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DE6E11142079B867009435AC;
+			remoteInfo = XWSqliteToolDemo;
+		};
+		DE6E113C2079B869009435AC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DE6E110D2079B867009435AC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DE6E11142079B867009435AC;
+			remoteInfo = XWSqliteToolDemo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		158F07D21211B2F1E622AA79 /* Pods-XWSqliteToolDemoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XWSqliteToolDemoUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-XWSqliteToolDemoUITests/Pods-XWSqliteToolDemoUITests.release.xcconfig"; sourceTree = "<group>"; };
+		24EABA173B0912932AEB3B85 /* Pods-XWSqliteToolDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XWSqliteToolDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-XWSqliteToolDemo/Pods-XWSqliteToolDemo.release.xcconfig"; sourceTree = "<group>"; };
+		5208D08BC63B3CAB6EE324CC /* Pods-XWSqliteToolDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XWSqliteToolDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-XWSqliteToolDemo/Pods-XWSqliteToolDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		643241B624A9E90F42ECDDCF /* libPods-XWSqliteToolDemoUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XWSqliteToolDemoUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6B29D42DCCF3F4BC52AF4DA1 /* libPods-XWSqliteToolDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XWSqliteToolDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6DB1EE9CAA352EC81FD800FB /* Pods-XWSqliteToolDemoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XWSqliteToolDemoUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-XWSqliteToolDemoUITests/Pods-XWSqliteToolDemoUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		77ED87BDA03F051B60C19172 /* Pods-XWSqliteToolDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XWSqliteToolDemoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-XWSqliteToolDemoTests/Pods-XWSqliteToolDemoTests.release.xcconfig"; sourceTree = "<group>"; };
+		D7A958AA845AEDF0BAAA7598 /* Pods-XWSqliteToolDemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XWSqliteToolDemoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-XWSqliteToolDemoTests/Pods-XWSqliteToolDemoTests.debug.xcconfig"; sourceTree = "<group>"; };
+		DE6E11152079B867009435AC /* XWSqliteToolDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XWSqliteToolDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE6E11182079B867009435AC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		DE6E11192079B867009435AC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		DE6E111B2079B867009435AC /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		DE6E111C2079B867009435AC /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		DE6E111F2079B867009435AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		DE6E11222079B867009435AC /* XWSqliteToolDemo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = XWSqliteToolDemo.xcdatamodel; sourceTree = "<group>"; };
+		DE6E11242079B869009435AC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DE6E11272079B869009435AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		DE6E11292079B869009435AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DE6E112A2079B869009435AC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		DE6E11302079B869009435AC /* XWSqliteToolDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XWSqliteToolDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE6E11342079B869009435AC /* XWSqliteToolDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XWSqliteToolDemoTests.m; sourceTree = "<group>"; };
+		DE6E11362079B869009435AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DE6E113B2079B869009435AC /* XWSqliteToolDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XWSqliteToolDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE6E113F2079B869009435AC /* XWSqliteToolDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XWSqliteToolDemoUITests.m; sourceTree = "<group>"; };
+		DE6E11412079B869009435AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DE6E114E2079BB47009435AC /* XWSqliteTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWSqliteTool.h; sourceTree = "<group>"; };
+		DE6E114F2079BB47009435AC /* XWSqliteModelTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWSqliteModelTool.h; sourceTree = "<group>"; };
+		DE6E11502079BB47009435AC /* XWFMDBTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWFMDBTool.m; sourceTree = "<group>"; };
+		DE6E11512079BB47009435AC /* XWSqliteModelToolFM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWSqliteModelToolFM.m; sourceTree = "<group>"; };
+		DE6E11522079BB47009435AC /* XWSqliteTableTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWSqliteTableTool.h; sourceTree = "<group>"; };
+		DE6E11532079BB47009435AC /* XWXModelTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWXModelTool.h; sourceTree = "<group>"; };
+		DE6E11542079BB47009435AC /* XWSqliteModelTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWSqliteModelTool.m; sourceTree = "<group>"; };
+		DE6E11552079BB47009435AC /* XWSqliteTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWSqliteTool.m; sourceTree = "<group>"; };
+		DE6E11562079BB47009435AC /* XWXModelProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWXModelProtocol.h; sourceTree = "<group>"; };
+		DE6E11572079BB47009435AC /* XWFMDBTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWFMDBTool.h; sourceTree = "<group>"; };
+		DE6E11582079BB47009435AC /* XWSqliteTableTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWSqliteTableTool.m; sourceTree = "<group>"; };
+		DE6E11592079BB47009435AC /* XWSqliteModelToolFM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWSqliteModelToolFM.h; sourceTree = "<group>"; };
+		DE6E115A2079BB47009435AC /* XWXModelTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWXModelTool.m; sourceTree = "<group>"; };
+		F2EE381DCB43CE7986FD4FD8 /* libPods-XWSqliteToolDemoTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XWSqliteToolDemoTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DE6E11122079B867009435AC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B4A805125ABF90FAACA7174C /* libPods-XWSqliteToolDemo.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DE6E112D2079B869009435AC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8855ECCDB3055FAC2C3F62B0 /* libPods-XWSqliteToolDemoTests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DE6E11382079B869009435AC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B7577CBB0E9C146ECF046655 /* libPods-XWSqliteToolDemoUITests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7D721B413874CAD5D97018F3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5208D08BC63B3CAB6EE324CC /* Pods-XWSqliteToolDemo.debug.xcconfig */,
+				24EABA173B0912932AEB3B85 /* Pods-XWSqliteToolDemo.release.xcconfig */,
+				D7A958AA845AEDF0BAAA7598 /* Pods-XWSqliteToolDemoTests.debug.xcconfig */,
+				77ED87BDA03F051B60C19172 /* Pods-XWSqliteToolDemoTests.release.xcconfig */,
+				6DB1EE9CAA352EC81FD800FB /* Pods-XWSqliteToolDemoUITests.debug.xcconfig */,
+				158F07D21211B2F1E622AA79 /* Pods-XWSqliteToolDemoUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		C295E816FBDFF3D7C6F27206 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6B29D42DCCF3F4BC52AF4DA1 /* libPods-XWSqliteToolDemo.a */,
+				F2EE381DCB43CE7986FD4FD8 /* libPods-XWSqliteToolDemoTests.a */,
+				643241B624A9E90F42ECDDCF /* libPods-XWSqliteToolDemoUITests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DE6E110C2079B867009435AC = {
+			isa = PBXGroup;
+			children = (
+				DE6E11172079B867009435AC /* XWSqliteToolDemo */,
+				DE6E11332079B869009435AC /* XWSqliteToolDemoTests */,
+				DE6E113E2079B869009435AC /* XWSqliteToolDemoUITests */,
+				DE6E11162079B867009435AC /* Products */,
+				7D721B413874CAD5D97018F3 /* Pods */,
+				C295E816FBDFF3D7C6F27206 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		DE6E11162079B867009435AC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DE6E11152079B867009435AC /* XWSqliteToolDemo.app */,
+				DE6E11302079B869009435AC /* XWSqliteToolDemoTests.xctest */,
+				DE6E113B2079B869009435AC /* XWSqliteToolDemoUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DE6E11172079B867009435AC /* XWSqliteToolDemo */ = {
+			isa = PBXGroup;
+			children = (
+				DE6E114D2079BB47009435AC /* XWSqliteTool */,
+				DE6E11182079B867009435AC /* AppDelegate.h */,
+				DE6E11192079B867009435AC /* AppDelegate.m */,
+				DE6E111B2079B867009435AC /* ViewController.h */,
+				DE6E111C2079B867009435AC /* ViewController.m */,
+				DE6E111E2079B867009435AC /* Main.storyboard */,
+				DE6E11242079B869009435AC /* Assets.xcassets */,
+				DE6E11262079B869009435AC /* LaunchScreen.storyboard */,
+				DE6E11292079B869009435AC /* Info.plist */,
+				DE6E112A2079B869009435AC /* main.m */,
+				DE6E11212079B867009435AC /* XWSqliteToolDemo.xcdatamodeld */,
+			);
+			path = XWSqliteToolDemo;
+			sourceTree = "<group>";
+		};
+		DE6E11332079B869009435AC /* XWSqliteToolDemoTests */ = {
+			isa = PBXGroup;
+			children = (
+				DE6E11342079B869009435AC /* XWSqliteToolDemoTests.m */,
+				DE6E11362079B869009435AC /* Info.plist */,
+			);
+			path = XWSqliteToolDemoTests;
+			sourceTree = "<group>";
+		};
+		DE6E113E2079B869009435AC /* XWSqliteToolDemoUITests */ = {
+			isa = PBXGroup;
+			children = (
+				DE6E113F2079B869009435AC /* XWSqliteToolDemoUITests.m */,
+				DE6E11412079B869009435AC /* Info.plist */,
+			);
+			path = XWSqliteToolDemoUITests;
+			sourceTree = "<group>";
+		};
+		DE6E114D2079BB47009435AC /* XWSqliteTool */ = {
+			isa = PBXGroup;
+			children = (
+				DE6E11572079BB47009435AC /* XWFMDBTool.h */,
+				DE6E11502079BB47009435AC /* XWFMDBTool.m */,
+				DE6E114F2079BB47009435AC /* XWSqliteModelTool.h */,
+				DE6E11542079BB47009435AC /* XWSqliteModelTool.m */,
+				DE6E11592079BB47009435AC /* XWSqliteModelToolFM.h */,
+				DE6E11512079BB47009435AC /* XWSqliteModelToolFM.m */,
+				DE6E11522079BB47009435AC /* XWSqliteTableTool.h */,
+				DE6E11582079BB47009435AC /* XWSqliteTableTool.m */,
+				DE6E114E2079BB47009435AC /* XWSqliteTool.h */,
+				DE6E11552079BB47009435AC /* XWSqliteTool.m */,
+				DE6E11562079BB47009435AC /* XWXModelProtocol.h */,
+				DE6E11532079BB47009435AC /* XWXModelTool.h */,
+				DE6E115A2079BB47009435AC /* XWXModelTool.m */,
+			);
+			path = XWSqliteTool;
+			sourceTree = SOURCE_ROOT;
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		DE6E11142079B867009435AC /* XWSqliteToolDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DE6E11442079B869009435AC /* Build configuration list for PBXNativeTarget "XWSqliteToolDemo" */;
+			buildPhases = (
+				57DE5730DE7A8DEB61BEE8A2 /* [CP] Check Pods Manifest.lock */,
+				DE6E11112079B867009435AC /* Sources */,
+				DE6E11122079B867009435AC /* Frameworks */,
+				DE6E11132079B867009435AC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = XWSqliteToolDemo;
+			productName = XWSqliteToolDemo;
+			productReference = DE6E11152079B867009435AC /* XWSqliteToolDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		DE6E112F2079B869009435AC /* XWSqliteToolDemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DE6E11472079B869009435AC /* Build configuration list for PBXNativeTarget "XWSqliteToolDemoTests" */;
+			buildPhases = (
+				F48531378ABB0B74EAD68A15 /* [CP] Check Pods Manifest.lock */,
+				DE6E112C2079B869009435AC /* Sources */,
+				DE6E112D2079B869009435AC /* Frameworks */,
+				DE6E112E2079B869009435AC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DE6E11322079B869009435AC /* PBXTargetDependency */,
+			);
+			name = XWSqliteToolDemoTests;
+			productName = XWSqliteToolDemoTests;
+			productReference = DE6E11302079B869009435AC /* XWSqliteToolDemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		DE6E113A2079B869009435AC /* XWSqliteToolDemoUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DE6E114A2079B869009435AC /* Build configuration list for PBXNativeTarget "XWSqliteToolDemoUITests" */;
+			buildPhases = (
+				E2AE82C4BB7983042B0BBFF2 /* [CP] Check Pods Manifest.lock */,
+				DE6E11372079B869009435AC /* Sources */,
+				DE6E11382079B869009435AC /* Frameworks */,
+				DE6E11392079B869009435AC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DE6E113D2079B869009435AC /* PBXTargetDependency */,
+			);
+			name = XWSqliteToolDemoUITests;
+			productName = XWSqliteToolDemoUITests;
+			productReference = DE6E113B2079B869009435AC /* XWSqliteToolDemoUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DE6E110D2079B867009435AC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0930;
+				ORGANIZATIONNAME = "邱学伟";
+				TargetAttributes = {
+					DE6E11142079B867009435AC = {
+						CreatedOnToolsVersion = 9.3;
+					};
+					DE6E112F2079B869009435AC = {
+						CreatedOnToolsVersion = 9.3;
+						TestTargetID = DE6E11142079B867009435AC;
+					};
+					DE6E113A2079B869009435AC = {
+						CreatedOnToolsVersion = 9.3;
+						TestTargetID = DE6E11142079B867009435AC;
+					};
+				};
+			};
+			buildConfigurationList = DE6E11102079B867009435AC /* Build configuration list for PBXProject "XWSqliteToolDemo" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = DE6E110C2079B867009435AC;
+			productRefGroup = DE6E11162079B867009435AC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DE6E11142079B867009435AC /* XWSqliteToolDemo */,
+				DE6E112F2079B869009435AC /* XWSqliteToolDemoTests */,
+				DE6E113A2079B869009435AC /* XWSqliteToolDemoUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DE6E11132079B867009435AC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DE6E11282079B869009435AC /* LaunchScreen.storyboard in Resources */,
+				DE6E11252079B869009435AC /* Assets.xcassets in Resources */,
+				DE6E11202079B867009435AC /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DE6E112E2079B869009435AC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DE6E11392079B869009435AC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		57DE5730DE7A8DEB61BEE8A2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-XWSqliteToolDemo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E2AE82C4BB7983042B0BBFF2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-XWSqliteToolDemoUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F48531378ABB0B74EAD68A15 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-XWSqliteToolDemoTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DE6E11112079B867009435AC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DE6E115E2079BB48009435AC /* XWSqliteTool.m in Sources */,
+				DE6E115F2079BB48009435AC /* XWSqliteTableTool.m in Sources */,
+				DE6E11232079B867009435AC /* XWSqliteToolDemo.xcdatamodeld in Sources */,
+				DE6E115B2079BB47009435AC /* XWFMDBTool.m in Sources */,
+				DE6E111D2079B867009435AC /* ViewController.m in Sources */,
+				DE6E115D2079BB48009435AC /* XWSqliteModelTool.m in Sources */,
+				DE6E115C2079BB48009435AC /* XWSqliteModelToolFM.m in Sources */,
+				DE6E11602079BB48009435AC /* XWXModelTool.m in Sources */,
+				DE6E112B2079B869009435AC /* main.m in Sources */,
+				DE6E111A2079B867009435AC /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DE6E112C2079B869009435AC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DE6E11352079B869009435AC /* XWSqliteToolDemoTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DE6E11372079B869009435AC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DE6E11402079B869009435AC /* XWSqliteToolDemoUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		DE6E11322079B869009435AC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DE6E11142079B867009435AC /* XWSqliteToolDemo */;
+			targetProxy = DE6E11312079B869009435AC /* PBXContainerItemProxy */;
+		};
+		DE6E113D2079B869009435AC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DE6E11142079B867009435AC /* XWSqliteToolDemo */;
+			targetProxy = DE6E113C2079B869009435AC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		DE6E111E2079B867009435AC /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DE6E111F2079B867009435AC /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		DE6E11262079B869009435AC /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DE6E11272079B869009435AC /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		DE6E11422079B869009435AC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		DE6E11432079B869009435AC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		DE6E11452079B869009435AC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5208D08BC63B3CAB6EE324CC /* Pods-XWSqliteToolDemo.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = EFBGB9EWP5;
+				INFOPLIST_FILE = XWSqliteToolDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.qiuxuewei.XWSqliteToolDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		DE6E11462079B869009435AC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 24EABA173B0912932AEB3B85 /* Pods-XWSqliteToolDemo.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = EFBGB9EWP5;
+				INFOPLIST_FILE = XWSqliteToolDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.qiuxuewei.XWSqliteToolDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		DE6E11482079B869009435AC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D7A958AA845AEDF0BAAA7598 /* Pods-XWSqliteToolDemoTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = XWSqliteToolDemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.qiuxuewei.XWSqliteToolDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/XWSqliteToolDemo.app/XWSqliteToolDemo";
+			};
+			name = Debug;
+		};
+		DE6E11492079B869009435AC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 77ED87BDA03F051B60C19172 /* Pods-XWSqliteToolDemoTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = XWSqliteToolDemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.qiuxuewei.XWSqliteToolDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/XWSqliteToolDemo.app/XWSqliteToolDemo";
+			};
+			name = Release;
+		};
+		DE6E114B2079B869009435AC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6DB1EE9CAA352EC81FD800FB /* Pods-XWSqliteToolDemoUITests.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = XWSqliteToolDemoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.qiuxuewei.XWSqliteToolDemoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = XWSqliteToolDemo;
+			};
+			name = Debug;
+		};
+		DE6E114C2079B869009435AC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 158F07D21211B2F1E622AA79 /* Pods-XWSqliteToolDemoUITests.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = XWSqliteToolDemoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.qiuxuewei.XWSqliteToolDemoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = XWSqliteToolDemo;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DE6E11102079B867009435AC /* Build configuration list for PBXProject "XWSqliteToolDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DE6E11422079B869009435AC /* Debug */,
+				DE6E11432079B869009435AC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DE6E11442079B869009435AC /* Build configuration list for PBXNativeTarget "XWSqliteToolDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DE6E11452079B869009435AC /* Debug */,
+				DE6E11462079B869009435AC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DE6E11472079B869009435AC /* Build configuration list for PBXNativeTarget "XWSqliteToolDemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DE6E11482079B869009435AC /* Debug */,
+				DE6E11492079B869009435AC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DE6E114A2079B869009435AC /* Build configuration list for PBXNativeTarget "XWSqliteToolDemoUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DE6E114B2079B869009435AC /* Debug */,
+				DE6E114C2079B869009435AC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		DE6E11212079B867009435AC /* XWSqliteToolDemo.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				DE6E11222079B867009435AC /* XWSqliteToolDemo.xcdatamodel */,
+			);
+			currentVersion = DE6E11222079B867009435AC /* XWSqliteToolDemo.xcdatamodel */;
+			path = XWSqliteToolDemo.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = DE6E110D2079B867009435AC /* Project object */;
+}
