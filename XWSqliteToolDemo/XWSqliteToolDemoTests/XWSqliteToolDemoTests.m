@@ -7,7 +7,9 @@
 //
 
 #import <XCTest/XCTest.h>
-
+#import "XWSqliteModelFMDBTool.h"
+#import "XWPerson.h"
+#import "XWStudent.h"
 @interface XWSqliteToolDemoTests : XCTestCase
 
 @end
@@ -16,17 +18,27 @@
 
 - (void)setUp {
     [super setUp];
-    // Put setup code here. This method is called before the invocation of each test method in the class.
 }
 
 - (void)tearDown {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
     [super tearDown];
+    NSLog(@"%@",NSHomeDirectory());
 }
 
 - (void)testExample {
-    // This is an example of a functional test case.
-    // Use XCTAssert and related functions to verify your tests produce the correct results.
+}
+
+//根据模型建表
+- (void)testCreateTableFromClass {
+    BOOL isSuccessNoUid =  [XWSqliteModelFMDBTool createTableFromClass:[XWPerson class] uid:nil];
+    BOOL isSuccessUid = [XWSqliteModelFMDBTool createTableFromClass:[XWPerson class] uid:@"101"];
+    XCTAssertTrue(isSuccessUid);
+    XCTAssertTrue(isSuccessNoUid);
+}
+
+- (void)testIsTableRequiredUpdate {
+    BOOL isUpdate = [XWSqliteModelFMDBTool isTableRequiredUpdate:[XWPerson class] uid:nil];
+    XCTAssert(isUpdate == 0);
 }
 
 - (void)testPerformanceExample {
@@ -34,6 +46,15 @@
     [self measureBlock:^{
         // Put the code you want to measure the time of here.
     }];
+}
+
+- (XWStudent *)demoStu {
+    XWStudent *stu = [[XWStudent alloc] init];
+    stu.number = 010;
+    stu.name = @"极客学伟";
+    stu.sex = 1;
+    stu.score = 60;
+    return stu;
 }
 
 @end
