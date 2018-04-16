@@ -38,7 +38,7 @@
 
 - (void)testIsTableRequiredUpdate {
     BOOL isUpdate = [XWSqliteModelFMDBTool isTableRequiredUpdate:[XWPerson class] uid:nil];
-    XCTAssert(isUpdate == 0);
+    XCTAssert(isUpdate == 1);
 }
 
 - (void)testPerformanceExample {

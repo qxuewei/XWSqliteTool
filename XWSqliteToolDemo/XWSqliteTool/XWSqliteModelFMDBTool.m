@@ -35,7 +35,8 @@
     return ![modelSortedNames isEqualToArray:currentSqliteColumn];
 }
 
-+(BOOL)updateTableFromCls:(Class)cls uid:(NSString *)uid{
+//倘若需要更新,则更新已有数据库表
++(void)updateTableFromCls:(Class)cls uid:(NSString *)uid callBack:(void(^)(BOOL isSuccess))callBack{
     //建表sql语句
     // create table if not exists 表名(字段1 : 字段1约束, 字段2 : 字段2约束, ... ,primary key(字段))
     NSString *tableName = [XWXModelTool tableNameWithCls:cls];
@@ -43,7 +44,8 @@
     
     if (![cls respondsToSelector:@selector(primaryKey)]) {
         NSLog(@"倘若希望使用 %@ 模型直接创建数据库,需要实现 +(NSString *)primaryKey; 类方法(准守XWXModelProtocol协议)",NSStringFromClass(cls));
-        return NO;
+        callBack ? callBack(NO) : nil;
+        return;
     }
     NSString *primary = [cls primaryKey];
     NSMutableArray *sqls = [NSMutableArray array];
@@ -55,7 +57,7 @@
     NSString *insertPrimaryKeyData = [NSString stringWithFormat:@"insert into %@(%@) select %@ from %@",tempTableName,primary,primary,tableName];
     [sqls addObject:insertPrimaryKeyData];
     //3.根据主键将老表所有数据更新到新表里面
-    NSArray *oldTable = [XWSqliteTableTool tableSortedColumnNames:cls uid:uid];
+    NSArray *oldTable = [XWSqliteTableTool fmdb_tableSortedColumnNames:cls uid:uid];
     NSArray *newTable = [XWXModelTool allTableSortedIvarNames:cls];
     for (NSString *tableIvarName in newTable) {
         if (![oldTable containsObject:tableIvarName]) {
@@ -70,7 +72,7 @@
     
     NSString *renameSql = [NSString stringWithFormat:@"alter table %@ rename to %@",tempTableName,tableName];
     [sqls addObject:renameSql];
-    return [XWSqliteTool dealSqls:sqls uid:nil];
+    [XWFMDBTool updateWithSqls:sqls uid:uid callBack:nil];
 }
 
 /*

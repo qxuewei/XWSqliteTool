@@ -9,11 +9,14 @@
 #import <Foundation/Foundation.h>
 #import "XWXModelProtocol.h"
 
-@interface XWPerson : NSObject <XWXModelProtocol>
+@interface XWPerson : NSObject <XWXModelProtocol> {
+    double weight;
+}
 
 @property (nonatomic, copy) NSString *uid;
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, assign) NSInteger age;
 @property (nonatomic, assign) NSInteger sex;
 @property (nonatomic, assign) double height;
+
 @end

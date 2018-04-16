@@ -30,7 +30,7 @@
 
 +(BOOL)isTableRequiredUpdate:(Class)cls uid:(NSString *)uid{
     NSArray *modelSortedNames = [XWXModelTool allTableSortedIvarNames:cls];
-    NSArray *currentSqliteColumn = [XWSqliteTableTool tableSortedColumnNames:cls uid:uid];
+    NSArray *currentSqliteColumn = [XWSqliteTableTool fmdb_tableSortedColumnNames:cls uid:uid];
     return ![modelSortedNames isEqualToArray:currentSqliteColumn];
 }
 
@@ -54,7 +54,7 @@
     NSString *insertPrimaryKeyData = [NSString stringWithFormat:@"insert into %@(%@) select %@ from %@",tempTableName,primary,primary,tableName];
     [sqls addObject:insertPrimaryKeyData];
     //3.根据主键将老表所有数据更新到新表里面
-    NSArray *oldTable = [XWSqliteTableTool tableSortedColumnNames:cls uid:uid];
+    NSArray *oldTable = [XWSqliteTableTool fmdb_tableSortedColumnNames:cls uid:uid];
     NSArray *newTable = [XWXModelTool allTableSortedIvarNames:cls];
     for (NSString *tableIvarName in newTable) {
         if (![oldTable containsObject:tableIvarName]) {

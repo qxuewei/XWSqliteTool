@@ -34,13 +34,16 @@
 /// 更新事务操作
 +(void)updateWithSqls:(NSArray<NSString*>*)sqls uid:(NSString *)uid callBack:(void(^)(BOOL isSuccess))callBack {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 8), ^{
+        if (sqls.count == 0) {
+            NSLog(@"请传入您要操作的Sql 语句");
+            callBack ? callBack(NO) : nil;
+            return ;
+        }
         FMDatabaseQueue *queue = [FMDatabaseQueue databaseQueueWithPath:[self dbPathWithUid:uid]];
         [queue inTransaction:^(FMDatabase * _Nonnull db, BOOL * _Nonnull rollback) {
             [sqls enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                 if (![db executeUpdate:obj]) {
-                    if (callBack) {
-                        callBack(NO);
-                    }
+                   callBack ? callBack(NO) : nil;
                 }
                 if (stop && callBack) {
                     callBack(YES);
