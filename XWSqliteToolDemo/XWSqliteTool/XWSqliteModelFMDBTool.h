@@ -36,10 +36,9 @@ typedef void(^XWSqliteModelFMDBToolResultsCallBack)(NSArray <id <XWXModelProtoco
  倘若需要更新,则更新已有数据库表
 
  @param cls 模型类
- @param uid 用户ID 可区分不同数据库
  @param callBack 结果
  */
-+(void)updateTableFromCls:(Class)cls uid:(NSString *)uid callBack:(XWSqliteModelFMDBToolCallBack)callBack;
++ (void)updateTableFromCls:(Class)cls updateSqls:(NSArray <NSString *>*)updateSqls callBack:(XWSqliteModelFMDBToolCallBack)callBack;
 
 /**
  对模型数组进行本地数据库新增或更新 - 若存在则更新所以字段,所不存在则插入本条数据

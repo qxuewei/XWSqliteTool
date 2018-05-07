@@ -31,9 +31,17 @@ static NSString *xw_dbUid;
     return _sharedObject;
 }
 
+//- (BOOL)isExistDB {
+//    return _db executeQuery:<#(nonnull NSString *), ...#>;
+//}
+
 - (BOOL)executeUpdate:(NSString *)sql {
     if ([_db open]) {
-        return [_db executeUpdate:sql];
+        BOOL isSuccess = [_db executeUpdate:sql];
+        if (isSuccess) {
+            [_db close];
+        }
+        return isSuccess;
     }else{
         NSLog(@"open error!!!!");
         return NO;
@@ -62,15 +70,19 @@ static NSString *xw_dbUid;
         return ;
     }
     [self inTransaction:^(FMDatabase *db, BOOL *rollback) {
-        [sqls enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            if (![db executeUpdate:obj]) {
-                callBack ? callBack(NO) : nil;
-            }
-            if (idx == (sqls.count - 1) && callBack) {
-                callBack(YES);
-                [db close];
-            }
-        }];
+        if ([db open]) {
+            [sqls enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                if (![db executeUpdate:obj]) {
+                    callBack ? callBack(NO) : nil;
+                    *rollback = YES;
+                }
+                if (idx == (sqls.count - 1) && callBack) {
+                    callBack ? callBack(YES) : nil;
+                }
+            }];
+        }else{
+            callBack ? callBack(NO) : nil;
+        }
     }];
 }
 

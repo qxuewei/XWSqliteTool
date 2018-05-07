@@ -43,14 +43,14 @@
 
 // 模型字段增加更新数据库
 - (void)testUpdateModelTable {
-    [XWSqliteModelFMDBTool updateTableFromCls:[XWPerson class] uid:nil callBack:^(BOOL isSuccess) {
+    [XWSqliteModelFMDBTool updateTableFromCls:[XWPerson class] updateSqls:nil callBack:^(BOOL isSuccess) {
         XCTAssert(isSuccess == 1);
     }];
 }
 
 - (void)testInsertOneObj {
     [XWSqliteModelFMDBTool insertOrUpdateDataToSQLiteWithModel:[self demoPerson] uid:nil isUpdateTable:YES callBack:^(BOOL isSuccess) {
-        XCTAssert(isSuccess);
+        XCTAssertTrue(isSuccess);
     }];
 }
 
@@ -63,11 +63,11 @@
 
 - (XWPerson *)demoPerson {
     XWPerson *stu = [[XWPerson alloc] init];
-    stu.name = @"极客学伟1";
+    stu.name = @"极客学伟12356";
     stu.sex = 1;
-    stu.uid = @"1";
-    stu.height = 183;
-    stu.address = @"北京市霍营华龙苑";
+    stu.uid = @"5";
+    stu.height = 188;
+    stu.address = @"北京";
 //    stu.girlFriends = @[@"小红",@"小婕"];
     return stu;
 }

@@ -32,13 +32,16 @@
 
 /// 判断是否更新模型字段
 +(BOOL)isTableRequiredUpdate:(Class)cls {
-    NSArray *modelSortedNames = [XWXModelTool allTableSortedIvarNames:cls];
     NSArray *array = [XWSqliteTableTool fmdb_tableSortedColumnNames:cls];
+    if (array.count == 0) {
+        return NO;
+    }
+    NSArray *modelSortedNames = [XWXModelTool allTableSortedIvarNames:cls];
     return ![modelSortedNames isEqualToArray:array];
 }
 
 //倘若需要更新,则更新已有数据库表
-+(void)updateTableFromCls:(Class)cls uid:(NSString *)uid callBack:(XWSqliteModelFMDBToolCallBack)callBack{
++(void)updateTableFromCls:(Class)cls updateSqls:(NSArray <NSString *>*)updateSqls callBack:(XWSqliteModelFMDBToolCallBack)callBack{
     //建表sql语句
     // create table if not exists 表名(字段1 : 字段1约束, 字段2 : 字段2约束, ... ,primary key(字段))
     NSString *tableName = [XWXModelTool tableNameWithCls:cls];
@@ -75,6 +78,10 @@
     
     NSString *renameSql = [NSString stringWithFormat:@"alter table %@ rename to %@",tempTableName,tableName];
     [sqls addObject:renameSql];
+    
+    if (updateSqls.count > 0) {
+        [sqls addObjectsFromArray:updateSqls];
+    }
     
     [[XWFMDatabaseQueueHelper sharedInstance] updateWithSqls:sqls callBack:^(BOOL isSuccess) {
         callBack ? callBack(isSuccess) : nil;
@@ -174,19 +181,16 @@
     }];
     
     if (isUpdateTable) {
-        [self updateTableFromCls:objClass uid:uid callBack:^(BOOL isSuccess) {
-            if (isSuccess) {
-                __block NSMutableArray *sqls = [NSMutableArray array];
-                for (NSObject <XWXModelProtocol>*obj in objs) {
-                    [sqls addObject:[self sql_insertOrUpdateDataToSQLiteWithModel:obj]];
-                }
-                [[XWFMDatabaseQueueHelper sharedInstance] updateWithSqls:sqls callBack:callback];
-            }else{
-                NSLog(@"检测到 %@ 模型字段更改,对应的数据库迁移失败!",NSStringFromClass(objClass));
-                callback ? callback(NO) : nil;
-            }
+        __block NSMutableArray *sqls = [NSMutableArray array];
+        for (NSObject <XWXModelProtocol>*obj in objs) {
+            [sqls addObject:[self sql_insertOrUpdateDataToSQLiteWithModel:obj]];
+        }
+        [self updateTableFromCls:objClass updateSqls:sqls callBack:^(BOOL isSuccess) {
+             callback ? callback(isSuccess) : nil;
         }];
+        
     }else{
+        
         __block NSMutableArray *sqls = [NSMutableArray array];
         for (NSObject <XWXModelProtocol>*obj in objs) {
             [sqls addObject:[self sql_insertOrUpdateDataToSQLiteWithModel:obj]];
@@ -214,7 +218,8 @@
         return;
     }
     
-    [XWSqliteModelFMDBTool createTableFromClass:objClass uid:uid callBack:^(BOOL isSuccess) {
+    
+    [self createTableFromClass:objClass uid:uid callBack:^(BOOL isSuccess) {
         if (!isSuccess) {
             NSLog(@"用 %@ 模型新建数据库失败!",NSStringFromClass(objClass));
             callback ? callback(NO) : nil;
@@ -223,21 +228,18 @@
     }];
     
     if (isUpdateTable) {
+        /// 需要动态更新表结构
         WS(weakSelf);
         /// 先判断是否需要更新!
         BOOL isRequired = [self isTableRequiredUpdate:objClass];
-        
         if (isRequired) {
-            [weakSelf updateTableFromCls:objClass uid:uid callBack:^(BOOL isSuccess) {
-                if (!isSuccess) {
-                    NSLog(@"检测到 %@ 模型字段更改,对应的数据库迁移失败!",NSStringFromClass(objClass));
-                    callback ? callback(NO) : nil;
-                }else{
-                    NSString *sql = [weakSelf sql_insertOrUpdateDataToSQLiteWithModel:obj];
-                    callback ? callback([[XWFMDatabaseQueueHelper sharedInstance] executeUpdate:sql]) : nil;
-                }
+            /// 更新
+            NSString *sql = [weakSelf sql_insertOrUpdateDataToSQLiteWithModel:obj];
+            [weakSelf updateTableFromCls:objClass updateSqls:@[sql] callBack:^(BOOL isSuccess) {
+                callback ? callback(isSuccess) : nil;
             }];
         }else{
+            
             NSString *sql = [weakSelf sql_insertOrUpdateDataToSQLiteWithModel:obj];
             callback ? callback([[XWFMDatabaseQueueHelper sharedInstance] executeUpdate:sql]) : nil;
         }
