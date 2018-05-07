@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-
 @interface XWSqliteTableTool : NSObject
-+(NSArray *)fmdb_tableSortedColumnNames:(Class)cls uid:(NSString *)uid;
++ (NSArray *)fmdb_tableSortedColumnNames:(Class)cls;
 @end

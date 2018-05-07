@@ -8,35 +8,37 @@
 
 #import "XWSqliteModelFMDBTool.h"
 #import "XWXModelTool.h"
-#import "XWSqliteTool.h"
+//#import "XWSqliteTool.h"
 #import "XWSqliteTableTool.h"
+#import "XWFMDatabaseQueueHelper.h"
 
-#import "XWFMDBTool.h"
+#define WS(weakSelf)  __weak __typeof(&*self)weakSelf = self;
+
 @implementation XWSqliteModelFMDBTool
 #pragma mark - public
-
-+(BOOL)createTableFromClass:(Class)cls uid:(NSString *)uid{
++(void)createTableFromClass:(Class)cls uid:(NSString *)uid callBack:(XWSqliteModelFMDBToolCallBack)callBack{
     //建表sql语句
     // create table if not exists 表名(字段1 : 字段1约束, 字段2 : 字段2约束, ... ,primary key(字段))
     NSString *tableName = [XWXModelTool tableNameWithCls:cls];
     if (![cls respondsToSelector:@selector(primaryKey)]) {
         NSLog(@"倘若希望使用 %@ 模型直接创建数据库,需要实现 +(NSString *)primaryKey; 类方法(准守XWXModelProtocol协议)",NSStringFromClass(cls));
-        return NO;
+        callBack ? callBack(NO) : nil;
     }
     NSString *primary = [cls primaryKey];
     NSString *createTableSql = [NSString stringWithFormat:@"create table if not exists %@(%@,primary key(%@))",tableName,[XWXModelTool createTableSql:cls],primary];
-    return [XWFMDBTool updateWithSql:createTableSql uid:uid];
+    
+    callBack ? callBack([[XWFMDatabaseQueueHelper sharedInstance] executeUpdate:createTableSql]) : nil;
 }
 
 /// 判断是否更新模型字段
-+(BOOL)isTableRequiredUpdate:(Class)cls uid:(NSString *)uid{
++(BOOL)isTableRequiredUpdate:(Class)cls {
     NSArray *modelSortedNames = [XWXModelTool allTableSortedIvarNames:cls];
-    NSArray *currentSqliteColumn = [XWSqliteTableTool fmdb_tableSortedColumnNames:cls uid:uid];
-    return ![modelSortedNames isEqualToArray:currentSqliteColumn];
+    NSArray *array = [XWSqliteTableTool fmdb_tableSortedColumnNames:cls];
+    return ![modelSortedNames isEqualToArray:array];
 }
 
 //倘若需要更新,则更新已有数据库表
-+(void)updateTableFromCls:(Class)cls uid:(NSString *)uid callBack:(void(^)(BOOL isSuccess))callBack{
++(void)updateTableFromCls:(Class)cls uid:(NSString *)uid callBack:(XWSqliteModelFMDBToolCallBack)callBack{
     //建表sql语句
     // create table if not exists 表名(字段1 : 字段1约束, 字段2 : 字段2约束, ... ,primary key(字段))
     NSString *tableName = [XWXModelTool tableNameWithCls:cls];
@@ -56,8 +58,9 @@
     //insert into tem_table(stuNum) select stuNum from XWStuModel
     NSString *insertPrimaryKeyData = [NSString stringWithFormat:@"insert into %@(%@) select %@ from %@",tempTableName,primary,primary,tableName];
     [sqls addObject:insertPrimaryKeyData];
+    
     //3.根据主键将老表所有数据更新到新表里面
-    NSArray *oldTable = [XWSqliteTableTool fmdb_tableSortedColumnNames:cls uid:uid];
+    NSArray *oldTable = [XWSqliteTableTool fmdb_tableSortedColumnNames:cls];
     NSArray *newTable = [XWXModelTool allTableSortedIvarNames:cls];
     for (NSString *tableIvarName in newTable) {
         if (![oldTable containsObject:tableIvarName]) {
@@ -72,7 +75,10 @@
     
     NSString *renameSql = [NSString stringWithFormat:@"alter table %@ rename to %@",tempTableName,tableName];
     [sqls addObject:renameSql];
-    [XWFMDBTool updateWithSqls:sqls uid:uid callBack:nil];
+    
+    [[XWFMDatabaseQueueHelper sharedInstance] updateWithSqls:sqls callBack:^(BOOL isSuccess) {
+        callBack ? callBack(isSuccess) : nil;
+    }];
 }
 
 /*
@@ -91,9 +97,8 @@
  传入单个模型进行本地数据新增或更新 - 若存在则更新所以字段,所不存在则插入本条数据
 
  @param obj 要插入的模型
- @return 最终SQL语句
  */
-+ (NSString *)sql_insertOrUpdateDataToSQLiteWithModel:(NSObject <XWXModelProtocol>*)obj uid:(NSString *)uid {
++ (NSString *)sql_insertOrUpdateDataToSQLiteWithModel:(NSObject <XWXModelProtocol>*)obj {
     if (!obj) {
         return NULL;
     }
@@ -110,9 +115,10 @@
     NSString *tableName = [XWXModelTool tableNameWithCls:objClass];
     // 查询当前数据表中是否存在此数据
     NSString *queryIsExistThisDataSql = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE %@ = '%@'",tableName,primaryKeyStr,primaryKeyObject];
-    NSMutableDictionary *sqlDict = [XWSqliteTool querySql:queryIsExistThisDataSql uid:nil].lastObject;
     
-    if (sqlDict.allKeys.count == 0) {
+    FMResultSet *resultSet = [[XWFMDatabaseQueueHelper sharedInstance] executeQuery:queryIsExistThisDataSql];
+    
+    if (!resultSet.next) {
         // 不存在此数据 - 单条插入
         NSMutableDictionary *insertSqlDict = [NSMutableDictionary dictionary];
         for (NSString *primaryKeyStr in allPropertyStrs) {
@@ -144,64 +150,101 @@
 
  @param objs 模型数组
  @param isUpdateTable 是否检查数据库表更新
- @return 更新结果
+
  */
-+ (BOOL)insertOrUpdateDataToSQLiteWithModels:(NSArray <NSObject <XWXModelProtocol>*>*)objs uid:(NSString *)uid isUpdateTable:(BOOL)isUpdateTable{
++ (void)insertOrUpdateDataToSQLiteWithModels:(NSArray <NSObject <XWXModelProtocol>*>*)objs uid:(NSString *)uid isUpdateTable:(BOOL)isUpdateTable callBack:(XWSqliteModelFMDBToolCallBack)callback{
+    
     if (objs.count == 0) {
-        return NO;
+        callback ? callback(NO) : nil;
+        return;
     }
     Class objClass = [[objs firstObject] class];
     if (![objClass respondsToSelector:@selector(primaryKey)]) {
         NSLog(@"倘若希望使用 %@ 模型数组进行本地数据库新增或更新,需要实现 +(NSString *)primaryKey; 类方法(准守XWXModelProtocol协议)",NSStringFromClass(objClass));
-        return NO;
+        callback ? callback(NO) : nil;
+        return;
     }
     
-    if (![XWSqliteModelFMDBTool createTableFromClass:objClass uid:uid]) {
-        NSLog(@"用 %@ 模型新建数据库失败!",NSStringFromClass(objClass));
-        return NO;
-    }
-    if (isUpdateTable) {    
-        if (![self toUpdateTable:objClass uid:uid]) {
-            NSLog(@"检测到 %@ 模型字段更改,对应的数据库迁移失败!",NSStringFromClass(objClass));
-            return NO;
+    [XWSqliteModelFMDBTool createTableFromClass:objClass uid:uid callBack:^(BOOL isSuccess) {
+        if (!isSuccess) {
+            NSLog(@"用 %@ 模型新建数据库失败!",NSStringFromClass(objClass));
+            callback ? callback(NO) : nil;
+            return;
         }
-    }
+    }];
     
-    NSMutableArray *sqls = [NSMutableArray array];
-    for (NSObject <XWXModelProtocol>*obj in objs) {
-        [sqls addObject:[self sql_insertOrUpdateDataToSQLiteWithModel:obj uid:uid]];
+    if (isUpdateTable) {
+        [self updateTableFromCls:objClass uid:uid callBack:^(BOOL isSuccess) {
+            if (isSuccess) {
+                __block NSMutableArray *sqls = [NSMutableArray array];
+                for (NSObject <XWXModelProtocol>*obj in objs) {
+                    [sqls addObject:[self sql_insertOrUpdateDataToSQLiteWithModel:obj]];
+                }
+                [[XWFMDatabaseQueueHelper sharedInstance] updateWithSqls:sqls callBack:callback];
+            }else{
+                NSLog(@"检测到 %@ 模型字段更改,对应的数据库迁移失败!",NSStringFromClass(objClass));
+                callback ? callback(NO) : nil;
+            }
+        }];
+    }else{
+        __block NSMutableArray *sqls = [NSMutableArray array];
+        for (NSObject <XWXModelProtocol>*obj in objs) {
+            [sqls addObject:[self sql_insertOrUpdateDataToSQLiteWithModel:obj]];
+        }
+        [[XWFMDatabaseQueueHelper sharedInstance] updateWithSqls:sqls callBack:callback];
     }
-    return [XWSqliteTool dealSqls:sqls uid:uid];
 }
 
 /**
  对模型进行本地数据库新增或更新 - 若存在则更新所以字段,所不存在则插入本条数据
  
- @param objs 模型数组
+ @param obj 模型
  @param isUpdateTable 是否检查数据库表更新
- @return 更新结果
+ 
  */
-+ (BOOL)insertOrUpdateDataToSQLiteWithModel:(NSObject <XWXModelProtocol>*)obj uid:(NSString *)uid isUpdateTable:(BOOL)isUpdateTable{
++ (void)insertOrUpdateDataToSQLiteWithModel:(NSObject <XWXModelProtocol>*)obj uid:(NSString *)uid isUpdateTable:(BOOL)isUpdateTable callBack:(XWSqliteModelFMDBToolCallBack)callback{
     if (!obj) {
-        return NO;
+        callback ? callback(NO) : nil;
+        return;
     }
     Class objClass = [obj class];
     if (![objClass respondsToSelector:@selector(primaryKey)]) {
         NSLog(@"倘若希望使用 %@ 模型数组进行本地数据库新增或更新,需要实现 +(NSString *)primaryKey; 类方法(准守XWXModelProtocol协议)",NSStringFromClass(objClass));
-        return NO;
+        callback ? callback(NO) : nil;
+        return;
     }
     
-    if (![XWSqliteModelFMDBTool createTableFromClass:objClass uid:uid]) {
-        NSLog(@"用 %@ 模型新建数据库失败!",NSStringFromClass(objClass));
-        return NO;
-    }
-    if (isUpdateTable) {
-        if (![self toUpdateTable:objClass uid:uid]) {
-            NSLog(@"检测到 %@ 模型字段更改,对应的数据库迁移失败!",NSStringFromClass(objClass));
-            return NO;
+    [XWSqliteModelFMDBTool createTableFromClass:objClass uid:uid callBack:^(BOOL isSuccess) {
+        if (!isSuccess) {
+            NSLog(@"用 %@ 模型新建数据库失败!",NSStringFromClass(objClass));
+            callback ? callback(NO) : nil;
+            return;
         }
+    }];
+    
+    if (isUpdateTable) {
+        WS(weakSelf);
+        /// 先判断是否需要更新!
+        BOOL isRequired = [self isTableRequiredUpdate:objClass];
+        
+        if (isRequired) {
+            [weakSelf updateTableFromCls:objClass uid:uid callBack:^(BOOL isSuccess) {
+                if (!isSuccess) {
+                    NSLog(@"检测到 %@ 模型字段更改,对应的数据库迁移失败!",NSStringFromClass(objClass));
+                    callback ? callback(NO) : nil;
+                }else{
+                    NSString *sql = [weakSelf sql_insertOrUpdateDataToSQLiteWithModel:obj];
+                    callback ? callback([[XWFMDatabaseQueueHelper sharedInstance] executeUpdate:sql]) : nil;
+                }
+            }];
+        }else{
+            NSString *sql = [weakSelf sql_insertOrUpdateDataToSQLiteWithModel:obj];
+            callback ? callback([[XWFMDatabaseQueueHelper sharedInstance] executeUpdate:sql]) : nil;
+        }
+    }else{
+        NSString *sql = [self sql_insertOrUpdateDataToSQLiteWithModel:obj];
+        callback ? callback([[XWFMDatabaseQueueHelper sharedInstance] executeUpdate:sql]) : nil;
     }
-    return [XWSqliteTool deal:[self sql_insertOrUpdateDataToSQLiteWithModel:obj uid:uid] uid:uid];
 }
 
 /**
@@ -212,21 +255,27 @@
  @param primaryKeyObject 主键值
  @param objClass 模型类
  @param uid UID
- @return 是否更新成功
+
  */
-+ (BOOL)insertOrUpdateDataToSQLiteWithPropertyKey:(NSString *)propertyKey propertyValue:(id)propertyValue primaryKeyObject:(NSString *)primaryKeyObject modelCls:(Class)objClass uid:(NSString *)uid {
++ (void)insertOrUpdateDataToSQLiteWithPropertyKey:(NSString *)propertyKey propertyValue:(id)propertyValue primaryKeyObject:(NSString *)primaryKeyObject modelCls:(Class)objClass uid:(NSString *)uid callBack:(XWSqliteModelFMDBToolCallBack)callback {
     if (!propertyValue || propertyKey.length == 0) {
-        return NO;
+        callback ? callback(NO) : nil;
     }
     if (![objClass respondsToSelector:@selector(primaryKey)]) {
         NSLog(@"倘若希望使用 %@ 模型数组进行本地数据库新增或更新,需要实现 +(NSString *)primaryKey; 类方法(准守XWXModelProtocol协议)",NSStringFromClass(objClass));
-        return NO;
+        callback ? callback(NO) : nil;
     }
-    if (![XWSqliteModelFMDBTool createTableFromClass:objClass uid:uid]) {
-        NSLog(@"用 %@ 模型新建数据库失败!",NSStringFromClass(objClass));
-        return NO;
-    }
-    return [XWSqliteTool deal:[self sql_insertOrUpdateDataToSQLiteWithPropertyKey:propertyKey propertyValue:propertyValue primaryKeyObject:primaryKeyObject modelCls:objClass uid:uid] uid:uid];
+   
+    [XWSqliteModelFMDBTool createTableFromClass:objClass uid:uid callBack:^(BOOL isSuccess) {
+        if (!isSuccess) {
+            NSLog(@"用 %@ 模型新建数据库失败!",NSStringFromClass(objClass));
+            callback ? callback(NO) : nil;
+            return;
+        }
+    }];
+    
+    NSString *sql = [self sql_insertOrUpdateDataToSQLiteWithPropertyKey:propertyKey propertyValue:propertyValue primaryKeyObject:primaryKeyObject modelCls:objClass uid:uid];
+    callback ? callback([[XWFMDatabaseQueueHelper sharedInstance] executeUpdate:sql]) : nil;
 }
 
 /**
@@ -235,13 +284,14 @@
  @param primaryValue 主键值
  @param cls 模型类
  @param uid uid
- @return 数据库主键为primaryKey的模型
  */
-+ (id <XWXModelProtocol>)objectFromDatabaseWithPrimaryValue:(NSInteger)primaryValue  modelCls:(Class)cls uid:(NSString *)uid {
++ (void)objectFromDatabaseWithPrimaryValue:(NSInteger)primaryValue  modelCls:(Class)cls uid:(NSString *)uid resultCallBack:(XWSqliteModelFMDBToolResultCallBack)resultCallBack {
     if (![cls respondsToSelector:@selector(primaryKey)]) {
         NSLog(@"倘若希望使用 %@ 模型数组进行本地数据库新增或更新,需要实现 +(NSString *)primaryKey; 类方法(准守XWXModelProtocol协议)",NSStringFromClass(cls));
-        return NULL;
+        resultCallBack ? resultCallBack(NULL) : nil;
+        return;
     }
+    
     // 成员属性 = 数据库对应类型
     NSDictionary *ivarNameTypeDict = [XWXModelTool classIvarNameTypeDic:cls];
     // 所有成员属性
@@ -251,13 +301,22 @@
     // 主键
     NSString *primaryKeyStr = [cls primaryKey];
     NSString *querySql = [NSString stringWithFormat:@"SELECT * FROM %@ where %@ = '%zd'",tableName,primaryKeyStr,primaryValue];
-    NSMutableArray *queryResult = [XWSqliteTool querySql:querySql uid:uid];
+    
+    NSMutableArray *queryResult;// = [XWSqliteTool querySql:querySql uid:uid];
     if (queryResult.count == 0) {
-        return NULL;
+        resultCallBack ? resultCallBack(NULL) : nil;
+        return;
+    }
+    
+    FMResultSet *result = [[XWFMDatabaseQueueHelper sharedInstance] executeQuery:querySql];
+    
+    Class xModelClass = [cls class];
+    id xObject = [[xModelClass alloc] init];
+    while (result.next) {
+        
     }
     // 模型数据字典
     NSDictionary *modelDict = [queryResult objectAtIndex:0];
-    
     Class xxModelClass = [cls class];
     id object = [[xxModelClass alloc] init];
     [modelDict enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
@@ -265,7 +324,7 @@
             [object setValue:obj forKey:key];
         }
     }];
-    return (id<XWXModelProtocol>)object;
+    resultCallBack ? resultCallBack((id<XWXModelProtocol>)object) : nil;
 }
 
 /**
@@ -290,7 +349,7 @@
     // 数据库表名
     NSString *tableName = [XWXModelTool tableNameWithCls:cls];
     NSString *querySql = [NSString stringWithFormat:@"SELECT * FROM %@ order by %@ %@ ",tableName,sortKey,isOrderDesc?@"desc":@""];
-    NSMutableArray *queryResult = [XWSqliteTool querySql:querySql uid:uid];
+    NSMutableArray *queryResult;// = [XWSqliteTool querySql:querySql uid:uid];
     NSMutableArray *objects = [[NSMutableArray alloc] init];
     [queryResult enumerateObjectsUsingBlock:^(NSDictionary *modelDict, NSUInteger idx, BOOL * _Nonnull stop) {
         Class xxModelClass = [cls class];
@@ -342,7 +401,7 @@
     // 主键
     NSString *primaryKeyStr = [cls primaryKey];
     NSString *querySql = [NSString stringWithFormat:@"SELECT %@ FROM %@ where %@ = '%@'",propertyKey,tableName,primaryKeyStr,primaryKey];
-    NSMutableArray *queryResult = [XWSqliteTool querySql:querySql uid:uid];
+    NSMutableArray *queryResult;// = [XWSqliteTool querySql:querySql uid:uid];
     if (queryResult.count == 0) {
         return NULL;
     }
@@ -389,7 +448,7 @@
     // 主键
     NSString *primaryKeyStr = [cls primaryKey];
     NSString *querySql = [NSString stringWithFormat:@"SELECT %@ FROM %@ where %@ = '%@'",propertyKeysStr,tableName,primaryKeyStr,primaryKey];
-    NSMutableArray *queryResult = [XWSqliteTool querySql:querySql uid:uid];
+    NSMutableArray *queryResult;// = [XWSqliteTool querySql:querySql uid:uid];
     if (queryResult.count == 0) {
         return NULL;
     }
@@ -407,12 +466,6 @@
 }
 
 #pragma mark - private
-+ (BOOL)toUpdateTable:(Class)cls uid:(NSString *)uid {
-    if (![self isTableRequiredUpdate:cls uid:uid]) {
-        return YES;
-    }
-    return [self updateTableFromCls:cls uid:uid];
-}
 /**
  
  

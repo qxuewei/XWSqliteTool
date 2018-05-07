@@ -9,15 +9,15 @@
 #import "XWSqliteTableTool.h"
 #import "XWXModelTool.h"
 #import "XWSqliteTool.h"
-#import "XWFMDBTool.h"
+#import "XWFMDatabaseQueueHelper.h"
 
 @implementation XWSqliteTableTool
-+(NSArray *)fmdb_tableSortedColumnNames:(Class)cls uid:(NSString *)uid{
++ (NSArray *)fmdb_tableSortedColumnNames:(Class)cls {
     NSString *tableName = [XWXModelTool tableNameWithCls:cls];
     //SELECT sql FROM sqlite_master WHERE type = 'table' AND name = 'XWStuModel'
     NSString *queryCreateTableSql = [NSString stringWithFormat:@"SELECT * FROM sqlite_master WHERE type = 'table' AND name = '%@'",tableName];
-    
-    FMResultSet *resultSet = [XWFMDBTool querySql:queryCreateTableSql uid:uid];
+    FMResultSet *resultSet = [[XWFMDatabaseQueueHelper sharedInstance] executeQuery:queryCreateTableSql];
+   
     NSString *createTableSql;
     // 遍历查询结果
     while (resultSet.next) {
@@ -25,7 +25,7 @@
     }
     
     if (createTableSql.length == 0) {
-        return nil;
+        return NULL;
     }
     // @"CREATE TABLE XWStuModel(age integer,stuNum integer,name text,primary key(stuNum))"
     //1.age integer,stuNum integer,name text,primary key
