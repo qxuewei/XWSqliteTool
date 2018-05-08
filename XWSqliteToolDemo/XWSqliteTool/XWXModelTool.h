@@ -20,4 +20,6 @@
 +(NSString *)createTableSql:(Class)cls;
 /// 所有排序后的类型名称
 +(NSArray *)allTableSortedIvarNames:(Class)cls;
+
++ (NSDictionary *)ocTypeToSqliteTypeDic;
 @end

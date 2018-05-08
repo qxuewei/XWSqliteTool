@@ -31,9 +31,9 @@ static NSString *xw_dbUid;
     return _sharedObject;
 }
 
-//- (BOOL)isExistDB {
-//    return _db executeQuery:<#(nonnull NSString *), ...#>;
-//}
+- (void)closeDB {
+    [_db close];
+}
 
 - (BOOL)executeUpdate:(NSString *)sql {
     if ([_db open]) {

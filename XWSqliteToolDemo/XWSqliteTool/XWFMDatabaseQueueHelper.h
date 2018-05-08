@@ -13,6 +13,8 @@
 
 + (XWFMDatabaseQueueHelper *)sharedInstance;
 
+- (void)closeDB;
+
 - (BOOL)executeUpdate:(NSString *)sql;
 
 - (FMResultSet *)executeQuery:(NSString *)sql;

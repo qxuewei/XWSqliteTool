@@ -20,7 +20,6 @@
 		DE6E11352079B869009435AC /* XWSqliteToolDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DE6E11342079B869009435AC /* XWSqliteToolDemoTests.m */; };
 		DE6E11402079B869009435AC /* XWSqliteToolDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = DE6E113F2079B869009435AC /* XWSqliteToolDemoUITests.m */; };
 		DE6E115E2079BB48009435AC /* XWSqliteTool.m in Sources */ = {isa = PBXBuildFile; fileRef = DE6E11552079BB47009435AC /* XWSqliteTool.m */; };
-		DE6E115F2079BB48009435AC /* XWSqliteTableTool.m in Sources */ = {isa = PBXBuildFile; fileRef = DE6E11582079BB47009435AC /* XWSqliteTableTool.m */; };
 		DE6E11602079BB48009435AC /* XWXModelTool.m in Sources */ = {isa = PBXBuildFile; fileRef = DE6E115A2079BB47009435AC /* XWXModelTool.m */; };
 		DE90197E207DAD700024F109 /* XWStudent.m in Sources */ = {isa = PBXBuildFile; fileRef = DE90197D207DAD700024F109 /* XWStudent.m */; };
 		DE9CB1C9207C687000AAE0E9 /* XWSqliteModelFMDBTool.m in Sources */ = {isa = PBXBuildFile; fileRef = DE9CB1C7207C687000AAE0E9 /* XWSqliteModelFMDBTool.m */; };
@@ -72,11 +71,9 @@
 		DE6E113F2079B869009435AC /* XWSqliteToolDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XWSqliteToolDemoUITests.m; sourceTree = "<group>"; };
 		DE6E11412079B869009435AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DE6E114E2079BB47009435AC /* XWSqliteTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWSqliteTool.h; sourceTree = "<group>"; };
-		DE6E11522079BB47009435AC /* XWSqliteTableTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWSqliteTableTool.h; sourceTree = "<group>"; };
 		DE6E11532079BB47009435AC /* XWXModelTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWXModelTool.h; sourceTree = "<group>"; };
 		DE6E11552079BB47009435AC /* XWSqliteTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWSqliteTool.m; sourceTree = "<group>"; };
 		DE6E11562079BB47009435AC /* XWXModelProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWXModelProtocol.h; sourceTree = "<group>"; };
-		DE6E11582079BB47009435AC /* XWSqliteTableTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWSqliteTableTool.m; sourceTree = "<group>"; };
 		DE6E115A2079BB47009435AC /* XWXModelTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWXModelTool.m; sourceTree = "<group>"; };
 		DE90197C207DAD700024F109 /* XWStudent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XWStudent.h; sourceTree = "<group>"; };
 		DE90197D207DAD700024F109 /* XWStudent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XWStudent.m; sourceTree = "<group>"; };
@@ -204,15 +201,13 @@
 			children = (
 				DE9CB1C8207C687000AAE0E9 /* XWSqliteModelFMDBTool.h */,
 				DE9CB1C7207C687000AAE0E9 /* XWSqliteModelFMDBTool.m */,
-				DE6E11522079BB47009435AC /* XWSqliteTableTool.h */,
-				DE6E11582079BB47009435AC /* XWSqliteTableTool.m */,
 				DE6E114E2079BB47009435AC /* XWSqliteTool.h */,
 				DE6E11552079BB47009435AC /* XWSqliteTool.m */,
-				DE6E11562079BB47009435AC /* XWXModelProtocol.h */,
 				DE6E11532079BB47009435AC /* XWXModelTool.h */,
 				DE6E115A2079BB47009435AC /* XWXModelTool.m */,
 				DEAA5F6A20A039AB00B0E800 /* XWFMDatabaseQueueHelper.h */,
 				DEAA5F6B20A039AB00B0E800 /* XWFMDatabaseQueueHelper.m */,
+				DE6E11562079BB47009435AC /* XWXModelProtocol.h */,
 			);
 			path = XWSqliteTool;
 			sourceTree = SOURCE_ROOT;
@@ -419,7 +414,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE6E115E2079BB48009435AC /* XWSqliteTool.m in Sources */,
-				DE6E115F2079BB48009435AC /* XWSqliteTableTool.m in Sources */,
 				DE90197E207DAD700024F109 /* XWStudent.m in Sources */,
 				DE9CB1C9207C687000AAE0E9 /* XWSqliteModelFMDBTool.m in Sources */,
 				DEAA5F6C20A039AB00B0E800 /* XWFMDatabaseQueueHelper.m in Sources */,

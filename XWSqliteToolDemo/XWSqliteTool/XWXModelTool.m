@@ -39,6 +39,7 @@
         ivarType = [ivarType stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"@\""]];
         [varListDict setObject:ivarType forKey:ivarName];
     }
+    free(varList);
     return varListDict;
 }
 +(NSDictionary *)classIvarNameSqliteTypeDic:(Class)cls{

@@ -11,6 +11,9 @@
 
 @interface XWPerson : NSObject <XWXModelProtocol>
 
+/// 数据库存储版本号
+//@property (nonatomic, assign) double version;
+
 @property (nonatomic, copy) NSString *uid;
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *address;

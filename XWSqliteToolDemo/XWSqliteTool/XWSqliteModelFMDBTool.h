@@ -14,15 +14,14 @@ typedef void(^XWSqliteModelFMDBToolSqlCallBack)(NSString *sql);
 typedef void(^XWSqliteModelFMDBToolResultCallBack)(id <XWXModelProtocol>obj);
 typedef void(^XWSqliteModelFMDBToolResultsCallBack)(NSArray <id <XWXModelProtocol>> *objs);
 
-
 @interface XWSqliteModelFMDBTool : NSObject
+
 /**
  根据模型建表
 
  @param cls 模型类
- @param uid 用户ID 可区分不同数据库
  */
-+ (void)createTableFromClass:(Class)cls uid:(NSString *)uid callBack:(XWSqliteModelFMDBToolCallBack)callBack;
++ (void)createTableFromClass:(Class)cls callBack:(XWSqliteModelFMDBToolCallBack)callBack;
 
 /**
  当前模型是否需要更新已有数据库表
@@ -36,9 +35,18 @@ typedef void(^XWSqliteModelFMDBToolResultsCallBack)(NSArray <id <XWXModelProtoco
  倘若需要更新,则更新已有数据库表
 
  @param cls 模型类
+ @param updateSqls 表迁移后更新sql (单纯更新表结构传nil)
  @param callBack 结果
  */
 + (void)updateTableFromCls:(Class)cls updateSqls:(NSArray <NSString *>*)updateSqls callBack:(XWSqliteModelFMDBToolCallBack)callBack;
+
+/**
+ 对单个模型进行本地数据库新增或更新 - 若存在则更新所以字段,所不存在则插入本条数据
+ 
+ @param obj 模型
+ @param isUpdateTable 是否检查数据库表更新
+ */
++ (void)insertOrUpdateDataToSQLiteWithModel:(NSObject <XWXModelProtocol>*)obj uid:(NSString *)uid isUpdateTable:(BOOL)isUpdateTable callBack:(XWSqliteModelFMDBToolCallBack)callback;
 
 /**
  对模型数组进行本地数据库新增或更新 - 若存在则更新所以字段,所不存在则插入本条数据
@@ -48,15 +56,6 @@ typedef void(^XWSqliteModelFMDBToolResultsCallBack)(NSArray <id <XWXModelProtoco
  
  */
 + (void)insertOrUpdateDataToSQLiteWithModels:(NSArray <NSObject <XWXModelProtocol>*>*)objs uid:(NSString *)uid isUpdateTable:(BOOL)isUpdateTable callBack:(XWSqliteModelFMDBToolCallBack)callback;
-
-
-/**
- 对模型进行本地数据库新增或更新 - 若存在则更新所以字段,所不存在则插入本条数据
- 
- @param obj 模型
- @param isUpdateTable 是否检查数据库表更新
- */
-+ (void)insertOrUpdateDataToSQLiteWithModel:(NSObject <XWXModelProtocol>*)obj uid:(NSString *)uid isUpdateTable:(BOOL)isUpdateTable callBack:(XWSqliteModelFMDBToolCallBack)callback;
 
 /**
  更新数据库中某单独字段 (保证数据表库中此数据必须存在)
@@ -76,10 +75,9 @@ typedef void(^XWSqliteModelFMDBToolResultsCallBack)(NSArray <id <XWXModelProtoco
  
  @param primaryValue 主键值
  @param cls 模型类
- @param uid uid
  @resultCallBack 数据库主键为primaryKey的模型
  */
-+ (void)objectFromDatabaseWithPrimaryValue:(NSInteger)primaryValue  modelCls:(Class)cls uid:(NSString *)uid resultCallBack:(XWSqliteModelFMDBToolResultCallBack)resultCallBack ;
++ (void)objectFromDatabaseWithPrimaryValue:(NSInteger)primaryValue  modelCls:(Class)cls  resultCallBack:(XWSqliteModelFMDBToolResultCallBack)resultCallBack ;
 
 /**
  传入排序字段获取数据库模型表中所有数据
