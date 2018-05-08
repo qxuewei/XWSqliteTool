@@ -82,6 +82,33 @@
     });
 }
 
+- (void)testUpdateOneObj {
+    [XWSqliteModelFMDBTool updateDataToSQLiteWithPropertyKey:@"name" propertyValue:@"极客学伟" primaryKeyObject:@"4" modelCls:[XWPerson class] callBack:^(BOOL isSuccess) {
+        XCTAssertTrue(isSuccess);
+    }];
+}
+
+
+- (void)testSortData {
+    [XWSqliteModelFMDBTool objectsFromDatabaseWithSortKey:@"weight2" isOrderDesc:NO modelCls:[XWPerson class] modelsCallBack:^(NSArray<id<XWXModelProtocol>> *models) {
+        for (XWPerson *person in models) {
+            NSLog(@"weight2: %f -- name: %@",person.weight2, person.name);
+        }
+    }];
+}
+
+- (void)testValueFromDatabaseWithPrimaryKey {
+    [XWSqliteModelFMDBTool valueFromDatabaseWithPrimaryKey:@"4" modelCls:[XWPerson class] propertyKey:@"weight2" valueCallBack:^(id value) {
+        NSLog(@"weight2 = %@",value);
+    }];
+}
+
+- (void)testValuesFromDatabaseWithPrimaryKey {
+    [XWSqliteModelFMDBTool valuesFromDatabaseWithPrimaryKey:@"4" modelCls:[XWPerson class] propertyKeys:@[@"name",@"age",@"weight2"] resultCallBack:^(XWPerson *person) {
+        NSLog(@"weight2: %f -- name: %@  -- age: %ld",person.weight2, person.name, (long)person.age);
+    }];
+}
+
 
 - (void)testPerformanceExample {
     // This is an example of a performance test case.
@@ -104,13 +131,15 @@
 
 - (NSArray *)demoPersons {
     NSMutableArray *persons = [NSMutableArray array];
-    for (int i = 0; i < 80; i++) {
+    for (int i = 0; i < 30; i++) {
         XWPerson *stu = [[XWPerson alloc] init];
-        stu.name = [NSString stringWithFormat:@"伟_%d",i];
+        stu.name = [NSString stringWithFormat:@"邱学伟_%d",i];
         stu.sex = 1;
         stu.uid = [NSString stringWithFormat:@"%d",i];
         stu.height = 18;
-        stu.address = @"诸城";
+        stu.age = arc4random_uniform(120);
+        stu.address = @"烟台";
+        stu.weight2 = arc4random_uniform(200) + arc4random_uniform(1);
         [persons addObject:stu];
     }
     return persons.copy;
