@@ -69,12 +69,10 @@
     }
     NSString *primary = [cls primaryKey];
     NSString *createTableSql = [NSString stringWithFormat:@"create table if not exists %@(%@,primary key(%@))",tableName,[XWXModelTool createTableSql:cls],primary];
-    
-    callBack ? callBack([[XWFMDatabaseQueueHelper sharedInstance] executeUpdate:createTableSql]) : nil;
-    
-//    [[XWFMDatabaseQueueHelper sharedInstance] updateWithSqls:@[createTableSql] callBack:^(BOOL isSuccess) {
-//        callBack ? callBack(isSuccess) : nil;
-//    }];
+
+    [[XWFMDatabaseQueueHelper sharedInstance] updateWithSqls:@[createTableSql] callBack:^(BOOL isSuccess) {
+        callBack ? callBack(isSuccess) : nil;
+    }];
 }
 
 /// 判断是否需要更新模型字段
@@ -171,11 +169,15 @@
             }];
         }else{
             NSString *sql = [weakSelf sql_insertOrUpdateDataToSQLiteWithModel:obj];
-            callback ? callback([[XWFMDatabaseQueueHelper sharedInstance] executeUpdate:sql]) : nil;
+            [[XWFMDatabaseQueueHelper sharedInstance] updateWithSqls:@[sql] callBack:^(BOOL isSuccess) {
+                callback ? callback(isSuccess) : nil;
+            }];
         }
     }else{
         NSString *sql = [self sql_insertOrUpdateDataToSQLiteWithModel:obj];
-        callback ? callback([[XWFMDatabaseQueueHelper sharedInstance] executeUpdate:sql]) : nil;
+        [[XWFMDatabaseQueueHelper sharedInstance] updateWithSqls:@[sql] callBack:^(BOOL isSuccess) {
+            callback ? callback(isSuccess) : nil;
+        }];
     }
 }
 
@@ -272,7 +274,9 @@
     }];
     
     NSString *sql = [self sql_insertOrUpdateDataToSQLiteWithPropertyKey:propertyKey propertyValue:propertyValue primaryKeyObject:primaryKeyObject modelCls:objClass uid:uid];
-    callback ? callback([[XWFMDatabaseQueueHelper sharedInstance] executeUpdate:sql]) : nil;
+    [[XWFMDatabaseQueueHelper sharedInstance] updateWithSqls:@[sql] callBack:^(BOOL isSuccess) {
+        callback ? callback(isSuccess) : nil;
+    }];
 }
 
 /**
@@ -290,30 +294,28 @@
     
     // 成员属性 = 数据库对应类型
     NSDictionary *ivarNameTypeDict = [XWXModelTool classIvarNameTypeDic:cls];
-    // 所有成员属性
-//    NSArray <NSString *>*allPropertyStrs = [ivarNameTypeDict allKeys];
     // 数据库表名
     NSString *tableName = [XWXModelTool tableNameWithCls:cls];
     // 主键
     NSString *primaryKeyStr = [cls primaryKey];
-    
+    // sql
     NSString *querySql = [NSString stringWithFormat:@"SELECT * FROM %@ where %@ = '%zd'",tableName,primaryKeyStr,primaryValue];
-    
+    WS(weakSelf);
     [[XWFMDatabaseQueueHelper sharedInstance] queryWithSqls:@[querySql] callBack:^(NSArray<FMResultSet *> *resultSets) {
-        
+        if (resultSets.count == 0) {
+            resultCallBack ? resultCallBack(NULL) : nil;
+            return ;
+        }
         FMResultSet *result = resultSets[0];
         Class xModelClass = [cls class];
         id xObject = [[xModelClass alloc] init];
         while (result.next) {
             [ivarNameTypeDict enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString *type, BOOL * _Nonnull stop) {
-                [self setProperty:xObject value:result columnName:key propertyName:key firstType:type];
+                [weakSelf setProperty:xObject value:result columnName:key propertyName:key firstType:type];
             }];
         }
-        
         resultCallBack ? resultCallBack((id<XWXModelProtocol>)xObject) : nil;
-        
     }];
-    
 }
 
 /**

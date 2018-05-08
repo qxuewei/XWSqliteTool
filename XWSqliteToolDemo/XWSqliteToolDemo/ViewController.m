@@ -18,7 +18,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self testInsertObjs];
+//    [self testInsertObjs];
 }
 
 - (void)testInsertObjs {

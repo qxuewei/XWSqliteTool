@@ -74,9 +74,7 @@ static NSString *xw_dbUid;
             __block NSMutableArray <FMResultSet *>*results = [NSMutableArray array];
             [sqls enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                 FMResultSet *set = [db executeQuery:obj];
-                if (!set) {
-                    *rollback = YES;
-                }else{
+                if (set) {
                     [results addObject:set];
                 }
             }];
