@@ -482,6 +482,7 @@
     
     FMResultSet *resultSet = [[XWFMDatabaseQueueHelper sharedInstance] executeQuery:queryIsExistThisDataSql];
     
+    NSString *sql;
     if (!resultSet.next) {
         // 不存在此数据 - 单条插入
         NSMutableDictionary *insertSqlDict = [NSMutableDictionary dictionary];
@@ -493,7 +494,7 @@
             [insertSqlDict setObject:currentObjectStr forKey:primaryKeyStr];
         }
         NSString *insertSql = [NSString stringWithFormat:@"insert into %@(%@) values(%@)",tableName,[insertSqlDict.allKeys componentsJoinedByString:@","],[insertSqlDict.allValues componentsJoinedByString:@","]];
-        return insertSql;
+        sql = insertSql;
     }else{
         // 已存在此数据 - 全部字段更新
         NSMutableArray *updateArrM = [NSMutableArray array];
@@ -505,8 +506,11 @@
             [updateArrM addObject:[NSString stringWithFormat:@"%@ = %@",primaryKeyStr,currentObjectStr]];
         }
         NSString *updateSql = [NSString stringWithFormat:@"UPDATE %@ SET %@ WHERE %@ = '%@'",tableName,[updateArrM componentsJoinedByString:@","],primaryKeyStr,primaryKeyObject];
-        return updateSql;
+        sql = updateSql;
     }
+    
+    [[XWFMDatabaseQueueHelper sharedInstance] closeDB];
+    return sql;
 }
 
 /**

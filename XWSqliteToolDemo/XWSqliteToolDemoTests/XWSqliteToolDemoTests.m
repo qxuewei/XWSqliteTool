@@ -83,21 +83,20 @@
     stu.uid = @"4";
     stu.height = 173;
     stu.address = @"烟台";
-    stu.weight = 100;
+//    stu.weight = 100;
 //    stu.girlFriends = @[@"小红",@"小婕"];
     return stu;
 }
 
 - (NSArray *)demoPersons {
     NSMutableArray *persons = [NSMutableArray array];
-    for (int i = 0; i < 2; i++) {
+    for (int i = 0; i < 60; i++) {
         XWPerson *stu = [[XWPerson alloc] init];
-        stu.name = [NSString stringWithFormat:@"学伟_%d",i];
+        stu.name = [NSString stringWithFormat:@"极客学伟_%d",i];
         stu.sex = 1;
         stu.uid = [NSString stringWithFormat:@"%d",i];
         stu.height = 18;
-        stu.address = @"北京";
-//        stu.weight = 188;
+        stu.address = @"成都";
         [persons addObject:stu];
     }
     return persons.copy;

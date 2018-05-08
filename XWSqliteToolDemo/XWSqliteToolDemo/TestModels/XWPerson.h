@@ -20,7 +20,6 @@
 @property (nonatomic, assign) NSInteger age;
 @property (nonatomic, assign) NSInteger sex;
 @property (nonatomic, assign) double height;
-@property (nonatomic, assign) double weight;
 @property (nonatomic, strong) NSArray *girlFriends;
 
 @end
