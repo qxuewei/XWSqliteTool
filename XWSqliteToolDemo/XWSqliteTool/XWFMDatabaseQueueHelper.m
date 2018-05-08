@@ -63,6 +63,30 @@ static NSString *xw_dbUid;
     }];
 }
 
+- (void)queryWithSqls:(NSArray<NSString*>*)sqls callBack:(void(^)(NSArray <FMResultSet *>*resultSets))callBack {
+    if (sqls.count == 0) {
+        NSLog(@"请传入您要操作的Sql 语句");
+        callBack ? callBack(NULL) : nil;
+        return ;
+    }
+    [self inTransaction:^(FMDatabase *db, BOOL *rollback) {
+        if ([db open]) {
+            __block NSMutableArray <FMResultSet *>*results = [NSMutableArray array];
+            [sqls enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                FMResultSet *set = [db executeQuery:obj];
+                if (!set) {
+                    *rollback = YES;
+                }else{
+                    [results addObject:set];
+                }
+            }];
+            callBack ? callBack(results) : nil;
+        }else{
+            callBack ? callBack(NULL) : nil;
+        }
+    }];
+}
+
 - (void)updateWithSqls:(NSArray<NSString*>*)sqls callBack:(void(^)(BOOL isSuccess))callBack {
     if (sqls.count == 0) {
         NSLog(@"请传入您要操作的Sql 语句");

@@ -71,6 +71,10 @@
     NSString *createTableSql = [NSString stringWithFormat:@"create table if not exists %@(%@,primary key(%@))",tableName,[XWXModelTool createTableSql:cls],primary];
     
     callBack ? callBack([[XWFMDatabaseQueueHelper sharedInstance] executeUpdate:createTableSql]) : nil;
+    
+//    [[XWFMDatabaseQueueHelper sharedInstance] updateWithSqls:@[createTableSql] callBack:^(BOOL isSuccess) {
+//        callBack ? callBack(isSuccess) : nil;
+//    }];
 }
 
 /// 判断是否需要更新模型字段
@@ -295,17 +299,21 @@
     
     NSString *querySql = [NSString stringWithFormat:@"SELECT * FROM %@ where %@ = '%zd'",tableName,primaryKeyStr,primaryValue];
     
-    FMResultSet *result = [[XWFMDatabaseQueueHelper sharedInstance] executeQuery:querySql];
+    [[XWFMDatabaseQueueHelper sharedInstance] queryWithSqls:@[querySql] callBack:^(NSArray<FMResultSet *> *resultSets) {
+        
+        FMResultSet *result = resultSets[0];
+        Class xModelClass = [cls class];
+        id xObject = [[xModelClass alloc] init];
+        while (result.next) {
+            [ivarNameTypeDict enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString *type, BOOL * _Nonnull stop) {
+                [self setProperty:xObject value:result columnName:key propertyName:key firstType:type];
+            }];
+        }
+        
+        resultCallBack ? resultCallBack((id<XWXModelProtocol>)xObject) : nil;
+        
+    }];
     
-    Class xModelClass = [cls class];
-    id xObject = [[xModelClass alloc] init];
-    while (result.next) {
-        [ivarNameTypeDict enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString *type, BOOL * _Nonnull stop) {
-            [self setProperty:xObject value:result columnName:key propertyName:key firstType:type];
-        }];
-    }
-    
-    resultCallBack ? resultCallBack((id<XWXModelProtocol>)xObject) : nil;
 }
 
 /**

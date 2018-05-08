@@ -23,4 +23,6 @@
 
 - (void)updateWithSqls:(NSArray<NSString*>*)sqls callBack:(void(^)(BOOL isSuccess))callBack;
 
+- (void)queryWithSqls:(NSArray<NSString*>*)sqls callBack:(void(^)(NSArray <FMResultSet *>*resultSets))callBack;
+
 @end

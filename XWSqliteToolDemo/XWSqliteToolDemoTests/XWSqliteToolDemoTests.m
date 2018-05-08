@@ -68,6 +68,20 @@
     }];
 }
 
+- (void)testUpdateAndQuery {
+//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//        [XWSqliteModelFMDBTool objectFromDatabaseWithPrimaryValue:4 modelCls:[XWPerson class] resultCallBack:^(XWPerson *obj) {
+//            NSLog(@"name:%@",obj.name);
+//        }];
+//    });
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [XWSqliteModelFMDBTool insertOrUpdateDataToSQLiteWithModels:[self demoPersons] uid:nil isUpdateTable:YES callBack:^(BOOL isSuccess) {
+            XCTAssertTrue(isSuccess);
+        }];
+    });
+}
+
 
 - (void)testPerformanceExample {
     // This is an example of a performance test case.
@@ -90,13 +104,13 @@
 
 - (NSArray *)demoPersons {
     NSMutableArray *persons = [NSMutableArray array];
-    for (int i = 0; i < 60; i++) {
+    for (int i = 0; i < 80; i++) {
         XWPerson *stu = [[XWPerson alloc] init];
-        stu.name = [NSString stringWithFormat:@"极客学伟_%d",i];
+        stu.name = [NSString stringWithFormat:@"伟_%d",i];
         stu.sex = 1;
         stu.uid = [NSString stringWithFormat:@"%d",i];
         stu.height = 18;
-        stu.address = @"成都";
+        stu.address = @"诸城";
         [persons addObject:stu];
     }
     return persons.copy;
