@@ -135,7 +135,7 @@
 }
 
 /// 对单个模型进行本地数据库新增或更新 - 若存在则更新所以字段,所不存在则插入本条数据
-+ (void)insertOrUpdateDataToSQLiteWithModel:(NSObject <XWXModelProtocol>*)obj uid:(NSString *)uid isUpdateTable:(BOOL)isUpdateTable callBack:(XWSqliteModelFMDBToolCallBack)callback{
++ (void)insertOrUpdateDataToSQLiteWithModel:(NSObject <XWXModelProtocol>*)obj  isUpdateTable:(BOOL)isUpdateTable callBack:(XWSqliteModelFMDBToolCallBack)callback{
     if (!obj) {
         callback ? callback(NO) : nil;
         return;
@@ -189,7 +189,7 @@
  @param isUpdateTable 是否检查数据库表更新
 
  */
-+ (void)insertOrUpdateDataToSQLiteWithModels:(NSArray <NSObject <XWXModelProtocol>*>*)objs uid:(NSString *)uid isUpdateTable:(BOOL)isUpdateTable callBack:(XWSqliteModelFMDBToolCallBack)callback{
++ (void)insertOrUpdateDataToSQLiteWithModels:(NSArray <NSObject <XWXModelProtocol>*>*)objs  isUpdateTable:(BOOL)isUpdateTable callBack:(XWSqliteModelFMDBToolCallBack)callback{
     
     if (objs.count == 0) {
         callback ? callback(NO) : nil;

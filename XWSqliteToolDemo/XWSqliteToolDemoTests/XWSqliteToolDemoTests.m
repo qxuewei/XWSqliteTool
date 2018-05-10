@@ -50,14 +50,14 @@
 
 // 插入/更新 单条数据模型
 - (void)testInsertOneObj {
-    [XWSqliteModelFMDBTool insertOrUpdateDataToSQLiteWithModel:[self demoPerson] uid:nil isUpdateTable:YES callBack:^(BOOL isSuccess) {
+    [XWSqliteModelFMDBTool insertOrUpdateDataToSQLiteWithModel:[self demoPerson] isUpdateTable:YES callBack:^(BOOL isSuccess) {
         XCTAssertTrue(isSuccess);
     }];
 }
 
 // 插入/更新 多条数据模型
 - (void)testInsertObjs {
-    [XWSqliteModelFMDBTool insertOrUpdateDataToSQLiteWithModels:[self demoPersons] uid:nil isUpdateTable:YES callBack:^(BOOL isSuccess) {
+    [XWSqliteModelFMDBTool insertOrUpdateDataToSQLiteWithModels:[self demoPersons] isUpdateTable:YES callBack:^(BOOL isSuccess) {
         XCTAssertTrue(isSuccess);
     }];
 }
@@ -76,7 +76,7 @@
 //    });
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        [XWSqliteModelFMDBTool insertOrUpdateDataToSQLiteWithModels:[self demoPersons] uid:nil isUpdateTable:YES callBack:^(BOOL isSuccess) {
+        [XWSqliteModelFMDBTool insertOrUpdateDataToSQLiteWithModels:[self demoPersons] isUpdateTable:YES callBack:^(BOOL isSuccess) {
             XCTAssertTrue(isSuccess);
         }];
     });
@@ -108,6 +108,8 @@
         NSLog(@"weight2: %f -- name: %@  -- age: %ld",person.weight2, person.name, (long)person.age);
     }];
 }
+
+
 
 
 - (void)testPerformanceExample {

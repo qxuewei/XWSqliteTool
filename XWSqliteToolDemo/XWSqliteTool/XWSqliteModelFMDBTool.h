@@ -46,7 +46,7 @@ typedef void(^XWSqliteModelFMDBToolResultsCallBack)(NSArray <id <XWXModelProtoco
  @param obj 模型
  @param isUpdateTable 是否检查数据库表更新
  */
-+ (void)insertOrUpdateDataToSQLiteWithModel:(NSObject <XWXModelProtocol>*)obj uid:(NSString *)uid isUpdateTable:(BOOL)isUpdateTable callBack:(XWSqliteModelFMDBToolCallBack)callback;
++ (void)insertOrUpdateDataToSQLiteWithModel:(NSObject <XWXModelProtocol>*)obj isUpdateTable:(BOOL)isUpdateTable callBack:(XWSqliteModelFMDBToolCallBack)callback;
 
 /**
  对模型数组进行本地数据库新增或更新 - 若存在则更新所以字段,所不存在则插入本条数据
@@ -55,7 +55,7 @@ typedef void(^XWSqliteModelFMDBToolResultsCallBack)(NSArray <id <XWXModelProtoco
  @param isUpdateTable 是否检查数据库表更新
  
  */
-+ (void)insertOrUpdateDataToSQLiteWithModels:(NSArray <NSObject <XWXModelProtocol>*>*)objs uid:(NSString *)uid isUpdateTable:(BOOL)isUpdateTable callBack:(XWSqliteModelFMDBToolCallBack)callback;
++ (void)insertOrUpdateDataToSQLiteWithModels:(NSArray <NSObject <XWXModelProtocol>*>*)objs isUpdateTable:(BOOL)isUpdateTable callBack:(XWSqliteModelFMDBToolCallBack)callback;
 
 /**
  更新数据库中某单独字段 (保证数据表库中此数据必须存在)
