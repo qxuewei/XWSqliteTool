@@ -70,18 +70,14 @@ static NSString *xw_dbUid;
         return ;
     }
     [self inTransaction:^(FMDatabase *db, BOOL *rollback) {
-        if ([db open]) {
-            __block NSMutableArray <FMResultSet *>*results = [NSMutableArray array];
-            [sqls enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                FMResultSet *set = [db executeQuery:obj];
-                if (set) {
-                    [results addObject:set];
-                }
-            }];
-            callBack ? callBack(results) : nil;
-        }else{
-            callBack ? callBack(NULL) : nil;
-        }
+        __block NSMutableArray <FMResultSet *>*results = [NSMutableArray array];
+        [sqls enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            FMResultSet *set = [db executeQuery:obj];
+            if (set) {
+                [results addObject:set];
+            }
+        }];
+        callBack ? callBack(results) : nil;
     }];
 }
 
@@ -92,19 +88,15 @@ static NSString *xw_dbUid;
         return ;
     }
     [self inTransaction:^(FMDatabase *db, BOOL *rollback) {
-        if ([db open]) {
-            [sqls enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                if (![db executeUpdate:obj]) {
-                    callBack ? callBack(NO) : nil;
-                    *rollback = YES;
-                }
-                if (idx == (sqls.count - 1) && callBack) {
-                    callBack ? callBack(YES) : nil;
-                }
-            }];
-        }else{
-            callBack ? callBack(NO) : nil;
-        }
+        [sqls enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            if (![db executeUpdate:obj]) {
+                callBack ? callBack(NO) : nil;
+                *rollback = YES;
+            }
+            if (idx == (sqls.count - 1) && callBack) {
+                callBack ? callBack(YES) : nil;
+            }
+        }];
     }];
 }
 

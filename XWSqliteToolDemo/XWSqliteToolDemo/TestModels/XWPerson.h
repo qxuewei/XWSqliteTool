@@ -11,9 +11,7 @@
 
 @interface XWPerson : NSObject <XWXModelProtocol>
 
-/// 数据库存储版本号
-//@property (nonatomic, assign) double version;
-
+@property (nonatomic, assign) double version;
 @property (nonatomic, copy) NSString *uid;
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *address;
@@ -22,6 +20,7 @@
 @property (nonatomic, assign) double height;
 @property (nonatomic, assign) double weight;
 @property (nonatomic, assign) double weight2;
+@property (nonatomic, assign) double weight3;
 @property (nonatomic, strong) NSArray *girlFriends;
 
 @end

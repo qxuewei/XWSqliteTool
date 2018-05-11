@@ -62,6 +62,7 @@
     }];
 }
 
+// 查询 XWPerson 表中 主键 为 4 的模型
 - (void)testQuery {
     [XWSqliteModelFMDBTool objectFromDatabaseWithPrimaryValue:4 modelCls:[XWPerson class] resultCallBack:^(XWPerson *obj) {
         NSLog(@"name:%@",obj.name);

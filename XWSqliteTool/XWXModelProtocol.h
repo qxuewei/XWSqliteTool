@@ -10,9 +10,11 @@
 
 @protocol XWXModelProtocol <NSObject>
 
+@required
 /// 主键
 +(NSString *)primaryKey;
 
+@optional
 /// 忽略的成员变量
 +(NSArray<NSString *> *)ignoreColumnNames;
 
