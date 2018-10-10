@@ -1,6 +1,7 @@
 # XWSqliteTool
 ## iOS 数据库工具类分享
-基于 对 FMDB 框架的封装，实现通过模型操作数据库的功能，不需要手写SQL语句，只要传入一个Model，框架会自动将Model内数据保存到指定数据库中, 并且会自动创建数据库，自动创建模型对应的表。
+🏰 The model operation database, based on the encapsulation of the FMDB framework, implements the function of operating the database through the model. It does not need to handwritten SQL statements. As long as a Model is passed in, the framework will automatically save the data in the Model to the specified database, and the database will be automatically created. Create a table corresponding to the model, 
+模型操作数据库，基于FMDB 框架的封装，实现通过模型操作数据库的功能，不需要手写SQL语句，只要传入一个Model，框架会自动将Model内数据保存到指定数据库中, 并且会自动创建数据库，自动创建模型对应的表。
 
 ## 功能列表
 1. 根据 Model 动态建表
