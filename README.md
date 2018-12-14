@@ -1,5 +1,5 @@
 
-此库已不再更新，异步 https://github.com/qxuewei/XWDatabase
+此库已不再更新，移步 https://github.com/qxuewei/XWDatabase
 
 
 ## Author
